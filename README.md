@@ -27,37 +27,33 @@ Toda la información relacionada con los puntos 2-4 podemos ir escribiendola en 
 
 (desde un terminal de linux/mac)
 
-1. Clonamos el repositorio:
-```
-$ git clone https://github.com/migrau/uoc_SAD.git
-```
+>1 -  Clonamos el repositorio:
 
-2. Comprobamos que nuestro repositorio local está enlazado correctamente:
+    $ git clone https://github.com/migrau/uoc_SAD.git
 
-```$ cd uoc_SAD```
-```$ git remote -v ```
-```origin  https://github.com/migrau/uoc_SAD.git (fetch)```
-```origin  https://github.com/migrau/uoc_SAD.git (push)```
 
-3. Realizamos nuestros cambios. Añadimos-modificamos ficheros.
+>2 - Comprobamos que nuestro repositorio local está enlazado correctamente:
 
-```#Añade todos los ficheros "untracked" ```
-```$ git add -A ```
-```$ git commit -a ``` 
+    $ cd uoc_SAD
+    $ git remote -v 
+    origin  https://github.com/migrau/uoc_SAD.git (fetch)
+    origin  https://github.com/migrau/uoc_SAD.git (push)
 
-4. Actualizamos repositorio web.
-```$ git push origin master```
+
+>3 - Realizamos nuestros cambios. Añadimos-modificamos ficheros.
+
+    #Añade todos los ficheros "untracked"
+    $ git add -A
+    $ git commit -a
+
+>4 - Actualizamos repositorio web.
+
+    $ git push origin master
+
 
 ##### Documentación interesante sobre el uso de repositorios
 
-[Enlace 1](https://git-scm.com/book/es/v1/Fundamentos-de-Git-Trabajando-con-repositorios-remotos#Inspeccionando-un-repositorio-remoto)
-
-[Enlace 2](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
-
-[Enlace 3](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-init)
-
-[Enlace 4](http://classic.scottr.org/presentations/git-in-5-minutes/)
-
- 
-
- 
+[1, ](https://git-scm.com/book/es/v1/Fundamentos-de-Git-Trabajando-con-repositorios-remotos#Inspeccionando-un-repositorio-remoto)
+[2, ](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+[3, ](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-init)
+[4.](http://classic.scottr.org/presentations/git-in-5-minutes/)
