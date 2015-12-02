@@ -34,16 +34,16 @@ $ git clone https://github.com/migrau/uoc_SAD.git
 
 2. Comprobamos que nuestro repositorio local está enlazado correctamente:
 
-```$ cd uoc_SAD
-$ git remote -v 
-origin  https://github.com/migrau/uoc_SAD.git (fetch)
-origin  https://github.com/migrau/uoc_SAD.git (push)```
+```$ cd uoc_SAD```
+```$ git remote -v ```
+```origin  https://github.com/migrau/uoc_SAD.git (fetch)```
+```origin  https://github.com/migrau/uoc_SAD.git (push)```
 
 3. Realizamos nuestros cambios. Añadimos-modificamos ficheros.
 
-```#Añade todos los ficheros "untracked"
- $ git add -A
-$ git commit -a ``` 
+```#Añade todos los ficheros "untracked" ```
+```$ git add -A ```
+```$ git commit -a ``` 
 
 4. Actualizamos repositorio web.
 ```$ git push origin master```
