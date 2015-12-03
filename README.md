@@ -40,7 +40,7 @@ Toda la información relacionada con los puntos 2-4 podemos ir escribiendola en 
     origin  https://github.com/migrau/uoc_SAD.git (push)
 
 
->3 - Realizamos nuestros cambios. Añadimos-modificamos ficheros.
+>3 - Realizamos nuestros cambios. Una vez está preparado para subir:
 
     #Añade todos los ficheros "untracked"
     $ git add -A
