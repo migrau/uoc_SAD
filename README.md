@@ -21,7 +21,9 @@ tenéis.
 * _Rscripts_. Contiene todos los scripts utilizados para resolver el ejercicio.
 * _DatosEntrada_. Bases de datos utilizadas.
 
-Toda la información relacionada con los puntos 2-4 podemos ir escribiendola en el wiki.
+Información adicional sobre los puntos 2-4 podemos ir escribiendola en el wiki.
+
+El informe final Rmarkdown donde escribir la memoria y generar los *plots* es *Rscripts/SAD_trabajoGrupo.Rmd*
 
 ## Cómo actualizar el repositorio.
 

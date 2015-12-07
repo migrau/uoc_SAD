@@ -1,0 +1,94 @@
+---
+title: "Software para el Análisis de Datos. Trabajo grupo X."
+output: pdf_document
+date: Diciembre 20, 2015
+author: Jose Angel Fernandez-Caballero Rico,
+        Elena Tortosa Binacua, 
+        Jorge Pulido Lozano,
+        Miguel Grau López
+abstract: |
+  Aquí podemos hacer una despripción general de nuestros datos/objetivos.
+
+---
+
+### Descripción del trabajo.
+
+1. Buscad un conjunto de datos relacionado con la Bioestadística. Puede ser generado por simulación, pueden ser datos incorporados en un paquete de R (no se usarán los paquetes IRIS, IRIS3) u otros repositorios. Tenéis que explicar la procedencia de estos datos.
+2. Explicad las variables de vuestro fichero, tipo, clasificación, etc... ¡Todo aquello que creáis que es relevante!
+3. Pensad un mínimo de cuatro de preguntas objetivo que queráis contestar con estos datos.
+4. Haced el análisis descriptivo de los datos. Todo aquello que creáis que es necesario. ¡Resumid los datos a vuestro criterio pero con sentido! Pensad siempre en las preguntas objetivo que queréis contestar. Si debéis recodificar variables.
+5. Generad los gráficos que creáis necesarios para resumir de forma gráfica la información que tenéis.
+
+
+### Descripción de las variables
+
+*LOCALIDAD* (Jose Angel Fernandez-Caballero).
+
+*CV* (Jose Angel Fernandez-Caballero).
+
+*CD4* (Jose Angel Fernandez-Caballero).
+
+*SEXO:* Sexo del paciente. Hombre-Mujer.
+
+*ESTADO:* Descripción del estado clínico actual del paciente. Tres posibles opciones:
+
+  1. Naive: Paciente que todavía no han comenzado ningún tratamiento o que empieza a tratarse por primera vez.
+  2. Dejó tratamiento: Paciente que ha abandonado el tratamiento. El motivo puede ser de distinta índole (efectos secundarios, desisten por agotamiento etc)
+  3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
+  
+*EDAD* (Elena Tortosa)
+
+*NACIONALIDAD* (Elena Tortosa)
+
+*SUBTIPO* (Jorge Pulido)
+
+*MUTACIONESPAÑA*
+
+*RESISTENCIA MUTACIONESPAÑA* (Jorge Pulido)
+
+### Preguntas objetivo
+
+#### José Angel
+
+1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
+2. ¿ Que subtipo VIH predomina en cada nacionalidad?
+3. ¿ Como se distribuye en % la infeccion VIH entre mujeres y hombres?
+4. ¿ Las mutaciones de resistecia se da en pacientes naives o en fracasos?
+5. ¿ Que mutación es la mas prevalente?
+6. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+
+#### Jorge Pulido
+
+1.  ¿quien son mas propensos a dejar el tto: hombre o mujeres? (facilona)
+2.  ¿existe prevalencia de una mutacion sobre un subtipo? (ya propuesta)
+3.  ¿relacion entre la nacionalidad y el subtipo? (ya propueta)
+4.  ¿relacion entre la nacionalidad y estado del tto? (ver si ciertas nacionalidades quedan excluidas o no)
+5.  ¿relacion entre la cv y los CD4?
+
+#### Elena
+
+1. Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? No sé si puede tener sentido que el virus se replique más en hombras o mujeres, o en gente joven o más mayor.
+
+2. Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4? Para la edad podríamos hacer disferentes categorias como menores de 25, entre 25-40, entre 40 y 65 y mayores de 65. O algo así...
+
+3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+
+4. Con respecto a las mutacions: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
+
+### Análisis descriptivo
+
+### Gráficos
+
+Ejemplo de como agregar gráficos en el informe:
+
+```{r}
+summary(cars)
+```
+
+Por ejemplo:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+`echo = FALSE` evita mostrar el código que genera el gráfico.
