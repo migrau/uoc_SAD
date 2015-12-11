@@ -79,7 +79,7 @@ abstract: |
 
 ### Gráficos
 
-Ejemplo de como agregar gráficos en el informe:
+Ejemplo de como agregar gráficos en el informe: 
 
 ```{r}
 summary(cars)
