@@ -22,11 +22,17 @@ abstract: |
 
 ### Descripción de las variables
 
-*LOCALIDAD* (Jose Angel Fernandez-Caballero). prueba
+*LOCALIDAD* (Jose Angel Fernandez-Caballero). 
+
+Esta variable nos informa del Hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
 *CV* (Jose Angel Fernandez-Caballero).
 
+Mediante esta variable podemos ver la cuantificación de la infección por virus VIH, se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
+
 *CD4* (Jose Angel Fernandez-Caballero).
+
+Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa cuyo rango es de 2-1.650 cel/ml.
 
 *SEXO:* Sexo del paciente. Hombre-Mujer.
 
@@ -77,7 +83,68 @@ abstract: |
 
 ### Análisis descriptivo
 
+1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
+
+datosCSV <- read.csv2("C:/Users/Marcos/Desktop/datosCSV.csv", sep=";")
+CV<-datosCSV[2]
+ESTADO<-datosCSV[4]
+with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
+##   FRACASO     NAIVE 
+##  41875.72 282669.35
+
+Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa.
+
+t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, var.equal=FALSE, data=datosCSV)
+## 
+##  Welch Two Sample t-test
+## 
+## data:  CV by ESTADO
+## t = -3.4522, df = 197.42, p-value = 0.0006802
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -378345.9 -103241.4
+## sample estimates:
+## mean in group FRACASO   mean in group NAIVE 
+##              41875.72             282669.35
+
+Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias, por tanto, no podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
+
+2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+
+table(datosCSV[1])
+## 
+##              Andujar       CARCEL GRANADA                 Jaen 
+##                    2                    3                   17 
+##              LINARES               Motril    Poniente El Ejido 
+##                    5                   12                   49 
+##          San Cecilio        Torrecardenas             VALENCIA 
+##                   64                   39                    3 
+## VIRGEN DE LAS NIEVES 
+##                   80
+El hospital con más pacientes es el Virgen de las Nieves con un total de 80.
+
+
+
 ### Gráficos
+
+1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
+
+plot(datosCSV[1])
+ 
+ 
+boxplot(CV~ESTADO, data=datosCSV, id.method="y")
+
+
+2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+
+with(datosCSV, pie(table(LOCALIDAD), labels=levels(LOCALIDAD), xlab="", 
+  ylab="", main="Pacientes según hospital"))
+
+Para saber mas acerca de como estan distribuidas las nacionalidades de los pacientes VIH podemos hacer la siguiente grafica. Donde se observa ( como era de esperar) que la nacionalidad Española es la mas comun. 
+
+with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="", ylab="", main="Frecuencia pacientes según nacionalidad"))
+
+
 
 Ejemplo de como agregar gráficos en el informe: 
 
