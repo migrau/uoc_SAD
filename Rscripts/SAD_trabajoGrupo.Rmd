@@ -22,7 +22,7 @@ abstract: |
 
 ### Descripción de las variables
 
-*LOCALIDAD* (Jose Angel Fernandez-Caballero).
+*LOCALIDAD* (Jose Angel Fernandez-Caballero). prueba
 
 *CV* (Jose Angel Fernandez-Caballero).
 
