@@ -19,15 +19,15 @@ abstract: |
 
 ### Descripción de las variables
 
-*LOCALIDAD* (Jose Angel Fernandez-Caballero). 
+*LOCALIDAD*  
 
 Esta variable nos informa del Hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
-*CV* (Jose Angel Fernandez-Caballero).
+*CV*
 
 Mediante esta variable podemos ver la cuantificación de la infección por virus VIH, se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
 
-*CD4* (Jose Angel Fernandez-Caballero).
+*CD4* 
 
 Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa cuyo rango es de 2-1.650 cel/ml.
 
