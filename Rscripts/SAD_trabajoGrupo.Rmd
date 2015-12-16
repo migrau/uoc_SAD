@@ -1,14 +1,11 @@
 ---
 title: "Software para el Análisis de Datos. Trabajo grupo X."
-output: pdf_document
-date: Diciembre 20, 2015
-author: Jose Angel Fernandez-Caballero Rico,
-        Elena Tortosa Binacua, 
-        Jorge Pulido Lozano,
-        Miguel Grau López
+author: Jose Angel Fernandez-Caballero Rico, Elena Tortosa Binacua, Jorge Pulido Lozano,
+  Miguel Grau López
+date: "Diciembre 20, 2015"
+output: word_document
 abstract: |
   Aquí podemos hacer una despripción general de nuestros datos/objetivos.
-
 ---
 
 ### Descripción del trabajo.
@@ -85,42 +82,45 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
 
 1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
 
-datosCSV <- read.csv2("C:/Users/Marcos/Desktop/datosCSV.csv", sep=";")
+
+```{r}
+datosCSV <- read.csv("/home/miquel/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", header=T, dec=".",sep="\t")
 CV<-datosCSV[2]
-ESTADO<-datosCSV[4]
+ESTADO<-datosCSV[5] 
 with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
-##   FRACASO     NAIVE 
-##  41875.72 282669.35
+
+#original (selecciona columna sexo en lugar de ESTADO real)
+#ESTADO<-datosCSV[4] 
+#   with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
+
+```
+
 
 Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa.
 
-t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, var.equal=FALSE, data=datosCSV)
-## 
-##  Welch Two Sample t-test
-## 
-## data:  CV by ESTADO
-## t = -3.4522, df = 197.42, p-value = 0.0006802
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -378345.9 -103241.4
-## sample estimates:
-## mean in group FRACASO   mean in group NAIVE 
-##              41875.72             282669.35
+```{r}
+#original 
+#(da error, como si t.test solo aceptara una lista con 2 posibles valores
+# y ESTADO contiene DEJO TRATAMIENTO, FRACASO y NAIVE (3))
+#t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, var.equal=FALSE,
+#data=datosCSV_fracaso_naive)
+
+#Si previamente, filtramos datosCSV para seleccionar unicamente los casos
+#fracaso-naive, sí que podemos ejecutar el t.test
+datosCSV_fracaso_naive <- subset(datosCSV, 
+                          datosCSV$ESTADO == "FRACASO" | datosCSV$ESTADO == "NAIVE")
+t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, 
+       var.equal=FALSE, data=datosCSV_fracaso_naive)
+```
 
 Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias, por tanto, no podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
 
 2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
 
+```{r}
 table(datosCSV[1])
-## 
-##              Andujar       CARCEL GRANADA                 Jaen 
-##                    2                    3                   17 
-##              LINARES               Motril    Poniente El Ejido 
-##                    5                   12                   49 
-##          San Cecilio        Torrecardenas             VALENCIA 
-##                   64                   39                    3 
-## VIRGEN DE LAS NIEVES 
-##                   80
+```
+
 El hospital con más pacientes es el Virgen de las Nieves con un total de 80.
 
 
@@ -129,21 +129,27 @@ El hospital con más pacientes es el Virgen de las Nieves con un total de 80.
 
 1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
 
-plot(datosCSV[1])
- 
- 
-boxplot(CV~ESTADO, data=datosCSV, id.method="y")
+```{r}
+plot(datosCSV[1], cex.names =0.4)
+```
 
+```{r}
+boxplot(CV~ESTADO, data=datosCSV, id.method="y")
+```
 
 2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
 
+```{r}
 with(datosCSV, pie(table(LOCALIDAD), labels=levels(LOCALIDAD), xlab="", 
   ylab="", main="Pacientes según hospital"))
+```
 
 Para saber mas acerca de como estan distribuidas las nacionalidades de los pacientes VIH podemos hacer la siguiente grafica. Donde se observa ( como era de esperar) que la nacionalidad Española es la mas comun. 
 
-with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="", ylab="", main="Frecuencia pacientes según nacionalidad"))
-
+```{r}
+with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="", 
+                   ylab="", main="Frecuencia pacientes según nacionalidad"))
+```
 
 
 Ejemplo de como agregar gráficos en el informe: 
