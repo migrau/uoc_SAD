@@ -121,7 +121,7 @@ Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significat
 table(datosCSV[1])
 ```
 
-El hospital con más pacientes es el Virgen de las Nieves con un total de 80.
+El hospital con más pacientes es el Virgen de las Nieves con un total de 84.
 
 
 
