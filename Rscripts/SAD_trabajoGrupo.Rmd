@@ -45,9 +45,7 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
 
 *SUBTIPO* (Jorge Pulido)
 
-*MUTACIONESPAÑA*
-
-*RESISTENCIA MUTACIONESPAÑA* (Jorge Pulido)
+*RESISTENCIA MUTACIONES* (Jorge Pulido)
 
 ### Preguntas objetivo
 
