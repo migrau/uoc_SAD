@@ -44,8 +44,45 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
 *NACIONALIDAD* (Elena Tortosa)
 
 *SUBTIPO* (Jorge Pulido)
+La diversidad genética del virus de la inmunodeficiencia humana (VIH) constituye un reto para su identificación y caracterización microbiológica.
+La diversidad del VIH y el desarrollo de subtipos es consecuencia de la capacidad del VIH de producir miles de millones de partículas virales al día. La enzima implicada en la replicación viral, la transcriptasa inversa, no es precisa y en ocasiones incorpora errores en el genoma viral, lo que resulta en mutaciones genéticas. Cuanto más se replica el VIH, más probable es que se produzcan errores, aumentando el potencial de que se produzca la variación genética.
+La clasificación en subtipos obedece a las diferentes secuencias de proteínas que caracterizan a los virus en circulación y no al modo en que el sistema inmunológico humano reconoce o reacciona al VIH. Este hecho es especialmente relevante por la introducción de múltiples variantes del VIH como consecuencia de la inmigración o los viajes internacionales
+Se clasifica en 2 tipos: el VIH-1 y el VIH-2, que comparten una identidad genética del 40-50%. El VIH-1 es el responsable mayoritario de la pandemia mundial y de casi todos los casos de sida; en cambio el VIH-2 es menos patógeno y se encuentra confinado principalmente en zonas de África occidental. Las cepas del VIH-1 se han asignado a 3 grupos: el grupo M (main o principal), el grupo O (outlier), y el grupo N (no M, no O), cada uno de los cuales proviene de diferentes saltos interespecie entre primates y humanos. El VIH-1 grupo M es el causante de la actual pandemia, y está dividido en 9 subtipos (A-D, F-H, J, K) y en cepas recombinantes entre ellos, denominadas formas recombinantes circulantes (CRF) o formas recombinantes únicas (URF). Por su parte, el VIH-2 consta de 8 genotipos (A-H).
+ 
+La prevalencia de suptipos no-B del grupo M del VIH han aumentado en los últimos años en Europa Occidental. Específicamente en ciudadanos españoles, la tasa de variantes no-B aumentó desde 1.5% en 2000-2002 a 11.4% en 2007-2010, siendo la forma recombinante CRF02_AG (37%) el subtipo no-B más frecuente en España, la mayoría en pacientes procedentes de África central y occidental. [Pernas B, et col. AIDS. 2014 May 26]
+En España y Portugal la mayoría de los aislados circulantes son del VIH-1, tipo B. La infección del VIH-2 está poco extendida en España, unos cientos de casos la mayoría pertenecientes a inmigrantes africanos del subtipo A, aunque los inmigrantes de Guinea Ecuatorial residentes en nuestro país son portadores del subtipo B
+En la actualidad, más del 20% de las nuevas infecciones por VIH en nuestro país y gran parte de Europa se debe a cepas distintas del VIH-1 subtipo B.
 
 *RESISTENCIA MUTACIONES* (Jorge Pulido)
+El VIH es “resistente” a un medicamento cuando continúa multiplicándose mientras el paciente está tomando antirretrovirales (ARVs). El VIH muta casi todas las veces que produce nuevas copias de sí mismo. El virus “tipo salvaje” es la forma más común del VIH. Cualquier otra forma diferente al tipo salvaje es considerada una mutación.
+Cuanto más se multiplica el VIH, más mutaciones aparecen. Tan solo una mutación puede ser suficiente para que el VIH desarrolle resistencia a algunos medicamentos
+La mejor manera de prevenir el desarrollo de resistencia es controlar al VIH con ARVs potentes. Si el paciente se salta la dosis de sus medicamentos, el VIH se multiplicará con mayor facilidad, ocasionando que ocurrirán más mutaciones y algunas de ellas pueden causar la  resistencia.
+Las mutaciones ocurren al azar, diariamente, pero muchas no causan daño. De hecho, en realidad muchas mutaciones ponen al VIH en desventaja – ya que reducen la “capacidad” del virus (lo deterioran) y disminuyen su habilidad para infectar células CD4 en el cuerpo. Sin embargo, algunas mutaciones pueden darle al VIH una ventaja de supervivencia cuando se usan medicamentos contra el VIH, ya que estas mutaciones pueden bloquear a los medicamentos y no los dejan actuar contra las enzimas del VIH a las que deben atacar. Estas son las mutaciones preocupantes cuando hablamos de resistencia a los medicamentos.
+El VIH se vale de varias enzimas para replicarse dentro de la célula humana. También se vale de proteínas, incluyendo la gp41 para adherirse a las células CD4 e infectarlas. Las mutaciones pueden ocurrir en cualquiera de estas partes del virus y causar resistencia a los medicamentos:
+•	Transcriptasa reversa: los inhibidores nucleósidos de la transcriptasa reversa (INTR) y los inhibidores no-nucleósidos de la transcriptasa reversa atacan a esta enzima 
+•	Integrasa: los inhibidores de la integrasa atacan a esta enzima. 
+•	Proteasa: los inhibidores de la proteasa atacan a esta enzima. 
+•	gp41: los inhibidores de la fusión atacan a esta proteína de la pared exterior del VIH.
+En las personas con VIH, la resistencia a medicamentos puede hacer que los medicamentos sean menos efectivos o completamente ineficaces, lo que puede reducir de manera importante las opciones de tratamiento.
+Las mutaciones que generan resistencia a los medicamentos para el VIH pueden aparecer antes o durante el tratamiento. A continuación vemos cómo sucede:
+•	Transmisión de VIH resistente a medicamentos
+•	Durante el tratamiento
+Si existe una "regla de oro" en el tratamiento antirretroviral, es esta: cuanto menor sea la cantidad de virus que hay en el cuerpo, menor será la posibilidad de que el virus continúe reproduciéndose y mutando. Un régimen anti VIH poderoso es la forma más eficaz de mantener al virus en un nivel bajo
+Lamentablemente, existen una serie de factores que pueden evitar que un régimen de medicamentos para el VIH alcance su potencia óptima
+•	Una adherencia insuficiente al tratamiento: Omitir algunas dosis o no tomar los medicamentos correctamente puede causar una disminución de la cantidad de medicamento anti VIH en la sangre
+•	Mala absorción
+•	Farmacocinética variable
+Por tanto nada mas detectarse en un paciente la presencia del virus hay que realizar un análisis genotípico y fenotípico para determinar el grado de mutaciones que presenta para realizar una correcta medicación.
+1)	Mutaciones que afectan a la retrotranscriptasa
+La retro transcriptasa es la enzima responsable de la replicación del material genético del virus
+EL VIH incorpora mecanismos de resistencia a los fármacos como:
+•	Introducción de mutaciones que permiten la discriminación entre nucleosido naturales y sintetico con lo que se impide la incorporación del fármaco.
+•	Introducción de mutaciones que conducen a un aumento de la pirofosforilisis, con lo cual se revierte el bloqueo de la cadena y permite que continue la sistesis de ADN. Estas mutaciones se conocen como NAN. 
+•	Aumento del numero de enzimas transcriptasas inversas presentes en el virion con lo que disminuye la presión del fármaco al no poder bloquear todas las enzimas permitiendo que asi el virion siga multiplicándose.
+
+2)	Mutaciones que afectan a las proteasas
+Esta ocasión es el turno de las mutaciones del VIH que confieren resistencia a los inhibidores de la proteasa (IP), Se ha observado con frecuencia una amplia resistencia cruzada a los IP en el VIH que presenta mutaciones en las posiciones 33, 82, 84 y 90 del gen de la proteasa. A este tipo de mutaciones se las conoce como mutaciones universales asociadas a los inhibidores de la proteasa. Se distinguen dos tipos de mutaciones que confieren resistencia a los IP: las mutaciones primarias y las secundarias. Las mutaciones primarias se localizan justo en la enzima de la proteasa del VIH e impiden que los IP se unan a ella. Son mutaciones bastante concretas para cada uno de los fármacos. Las secundarias se localizan fuera del lugar activo de la proteasa y en general aparecen más tarde que las primarias. Por sí solas no causan resistencia a los fármacos, pero permiten al virus adaptarse al efecto producido por la mutación primaria
+Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54, 63, 71, 82, 84 y 90 de la IP pueden provocar una disminución de la susceptibilidad a lopinavir.
 
 ### Preguntas objetivo
 
