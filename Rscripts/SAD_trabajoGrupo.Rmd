@@ -44,6 +44,7 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
 *NACIONALIDAD* (Elena Tortosa)
 
 *SUBTIPO* (Jorge Pulido)
+
 La diversidad genética del virus de la inmunodeficiencia humana (VIH) constituye un reto para su identificación y caracterización microbiológica.
 La diversidad del VIH y el desarrollo de subtipos es consecuencia de la capacidad del VIH de producir miles de millones de partículas virales al día. La enzima implicada en la replicación viral, la transcriptasa inversa, no es precisa y en ocasiones incorpora errores en el genoma viral, lo que resulta en mutaciones genéticas. Cuanto más se replica el VIH, más probable es que se produzcan errores, aumentando el potencial de que se produzca la variación genética.
 La clasificación en subtipos obedece a las diferentes secuencias de proteínas que caracterizan a los virus en circulación y no al modo en que el sistema inmunológico humano reconoce o reacciona al VIH. Este hecho es especialmente relevante por la introducción de múltiples variantes del VIH como consecuencia de la inmigración o los viajes internacionales
@@ -54,6 +55,7 @@ En España y Portugal la mayoría de los aislados circulantes son del VIH-1, tip
 En la actualidad, más del 20% de las nuevas infecciones por VIH en nuestro país y gran parte de Europa se debe a cepas distintas del VIH-1 subtipo B.
 
 *RESISTENCIA MUTACIONES* (Jorge Pulido)
+
 El VIH es “resistente” a un medicamento cuando continúa multiplicándose mientras el paciente está tomando antirretrovirales (ARVs). El VIH muta casi todas las veces que produce nuevas copias de sí mismo. El virus “tipo salvaje” es la forma más común del VIH. Cualquier otra forma diferente al tipo salvaje es considerada una mutación.
 Cuanto más se multiplica el VIH, más mutaciones aparecen. Tan solo una mutación puede ser suficiente para que el VIH desarrolle resistencia a algunos medicamentos
 La mejor manera de prevenir el desarrollo de resistencia es controlar al VIH con ARVs potentes. Si el paciente se salta la dosis de sus medicamentos, el VIH se multiplicará con mayor facilidad, ocasionando que ocurrirán más mutaciones y algunas de ellas pueden causar la  resistencia.
