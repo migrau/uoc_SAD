@@ -40,9 +40,11 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
   3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
   
 *EDAD* 
+
 Esta variable nos informa de la edad de los paciente que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
 
 *NACIONALIDAD* 
+
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
 *SUBTIPO* (Jorge Pulido)
@@ -162,6 +164,65 @@ table(datosCSV[1])
 
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
 
+3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? *Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.* 
+Abro la tabla de datos
+
+```{r}
+Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, 
+  sep="", na.strings="NA", dec=".", strip.white=TRUE)
+```
+
+Recodifico la variable edad en una nueva variable categórica llamada **edad_cat**.
+Se considerará:
+    **jóven** a los menores de 30 años,
+		**adultos** a los comprendidos entre los 30 y 65 años,
+		**tercera edad** a lo mayores de 65 años.
+
+```{r}
+Tabla <- within(Tabla, {
+  edad_cat <- Recode(edad, 
+  '0:34 = "Joven"; 35:65 = "Adulto"; 66:100 = "Tercera edad"', 
+  as.factor.result=TRUE)
+})
+```
+
+Analizo el *número* de individuos y la *proporción* de nuestra población que hay en cada **grupo de edad**:
+
+```{r}
+local({
+  .Table <- with(Tabla, table(edad_cat))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+
+```
+
+Estudio el *número* de individuos y la *proporción* de nuestra población que hay según el **género**:
+
+```{r}
+local({
+  .Table <- with(Tabla, table(SEXO))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+
+```
+
+Sumarizo los principales estadísticos de **CV y CD4** en función del **género**:
+```{r warning=FALSE}
+numSummary(Tabla[,"CV"], groups=Tabla$SEXO, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+numSummary(Tabla[,"CD4"], groups=Tabla$SEXO, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+Y en función del **grupo de edad**:
+```{r warning=FALSE}
+numSummary(Tabla[,"CV"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
+numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
+```
 
 
 ### Gráficos
@@ -204,3 +265,82 @@ plot(cars)
 ```
 
 `echo = FALSE` evita mostrar el código que genera el gráfico.
+
+3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente?
+Represento las proporciones de la población de los grupos según el **grupo de edad** y el  **género**:
+
+```{r warning=FALSE}
+layout ( matrix (c(1 ,2) , 1, 2, byrow = TRUE ))
+pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), xlab="", ylab="", main="Grupos de edad")
+pie(table(Tabla$SEXO), labels=levels(Tabla$SEXO), xlab="", ylab="", main="Géneros")
+
+```
+
+Para representar el resto de los gráficos usamos el paquete lattice. 
+```{r warning=FALSE}
+library(lattice)
+```
+
+**1. CV y CD4 según género.**
+
+Represento los niveles de **CV** en función del **género**. 
+
+    > Diagrama de cajas
+```{r warning=FALSE}
+bwplot(factor(SEXO) ~ CV, data = Tabla, xlab="cp/ml", main = "Carga viral en función del género")
+```
+
+    > Función de densidad
+```{r warning=FALSE}
+densityplot(~ CV, data = Tabla, groups = SEXO, plot.points=FALSE, auto.key=TRUE, main= "Carga viral en función del género",  xlab="cp/ml" )
+```
+
+Se puede ver como, a pesar de no haber grandes diferencias en las medias de los diferentes grupos, la distribución varía un poco. En mujeres la población es más homogénea, habiendo un mayor número de casos alrededor de la media. Por el contrario, en hombres se puede ver que hay una mayor variabilidad, encontrando casos con un mayor número de carga viral en sangre. 
+
+Represento los niveles de **CD4** en función del **género**:
+
+    > Diagrama de cajas
+```{r warning=FALSE}
+bwplot(factor(SEXO)~ CD4, data = Tabla, xlab="cel/ml", main = "Niveles de CD4 en función del género")
+```
+
+    > Función de densidad
+```{r warning=FALSE}
+densityplot(~ CD4, data = Tabla, groups = SEXO, plot.points=FALSE, auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
+```
+
+Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos sexos.Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
+
+**1. CV y CD4 según edad.**
+
+Ahora voy a ver si la carga viral o los niveles de CD4 varían según la edad del paciente:
+
+Represento los niveles de **CV** en función de la **edad**:
+
+    > Diagrama de cajas
+```{r warning=FALSE}
+bwplot(factor(edad_cat)~ CV , data = Tabla, xlab="cp/ml", main = "Carga viral en función de la edad")
+```
+
+    > Función de densidad
+```{r warning=FALSE}
+densityplot(~ CV, data = Tabla, groups = edad_cat, plot.points=FALSE, auto.key=TRUE, main= "Carga viral en función de la edad",  xlab="cp/ml" )
+```
+
+Se puede ver que no hay grandes diferencias en las medias de los diferentes grupos. Sin embargo, la distribución varía. En el grupo de la tercera edad se puede var que los datos son mucho más homogéneos comparados con el grupo de jóvenes. Sin embargo, hay que tener en cuenta que el número de individuos en el grupo de la tercera edad es de únicamente 4. Si comparamos el grupo de jóvenes con el de adultos de puede ver que los valores de CV son mucho más homogéneos en gente joven.
+
+Represento los niveles de **CD4** en función de la **edad**:
+
+    > Diagrama de cajas
+```{r warning=FALSE}
+bwplot(factor(edad_cat)~ CD4, data = Tabla, main= "Niveles de CD4 en función del género")
+```
+
+    > Función de densidad
+```{r warning=FALSE}
+densityplot(~ CD4, data = Tabla, groups = edad_cat, plot.points=FALSE, auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
+```
+
+Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos grupos de edad.A igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adulto y en joven el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
+
+Parece que, mientras que en gente jóven los niveles de DC4 y CV son más homogéneos, en adultos existe una mayor variabilidad.
