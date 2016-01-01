@@ -311,7 +311,7 @@ densityplot(~ CD4, data = Tabla, groups = SEXO, plot.points=FALSE, auto.key=TRUE
 
 Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos sexos.Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
 
-**1. CV y CD4 según edad.**
+**2. CV y CD4 según edad.**
 
 Ahora voy a ver si la carga viral o los niveles de CD4 varían según la edad del paciente:
 
