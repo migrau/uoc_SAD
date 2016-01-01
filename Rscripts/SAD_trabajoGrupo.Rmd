@@ -39,9 +39,11 @@ Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial 
   2. Dejó tratamiento: Paciente que ha abandonado el tratamiento. El motivo puede ser de distinta índole (efectos secundarios, desisten por agotamiento etc)
   3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
   
-*EDAD* (Elena Tortosa)
+*EDAD* 
+Esta variable nos informa de la edad de los paciente que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
 
-*NACIONALIDAD* (Elena Tortosa)
+*NACIONALIDAD* 
+Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
 *SUBTIPO* (Jorge Pulido)
 
