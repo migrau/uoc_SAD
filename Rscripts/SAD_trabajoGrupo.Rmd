@@ -47,7 +47,7 @@ Esta variable nos informa de la edad de los paciente que se están estudiando.  
 
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
-*SUBTIPO* (Jorge Pulido)
+*SUBTIPO* 
 
 La diversidad genética del virus de la inmunodeficiencia humana (VIH) constituye un reto para su identificación y caracterización microbiológica.
 La diversidad del VIH y el desarrollo de subtipos es consecuencia de la capacidad del VIH de producir miles de millones de partículas virales al día. La enzima implicada en la replicación viral, la transcriptasa inversa, no es precisa y en ocasiones incorpora errores en el genoma viral, lo que resulta en mutaciones genéticas. Cuanto más se replica el VIH, más probable es que se produzcan errores, aumentando el potencial de que se produzca la variación genética.
