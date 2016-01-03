@@ -223,6 +223,17 @@ Y en función del **grupo de edad**:
 numSummary(Tabla[,"CV"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
 numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
 ```
+2.  ¿existe prevalencia de una mutación sobre un subtipo? 
+
+SUBTIPO
+counts:
+SUBTIPO
+ 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
+     2     22      4      1      2      7    216      5      5      8      9      1 
+percentages:
+SUBTIPO
+ 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
+  0.71   7.80   1.42   0.35   0.71   2.48  76.60   1.77   1.77   2.84   3.19   0.35
 
 
 
