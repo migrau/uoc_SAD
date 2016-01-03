@@ -275,6 +275,87 @@ pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), xlab="", ylab="", main
 pie(table(Tabla$SEXO), labels=levels(Tabla$SEXO), xlab="", ylab="", main="Géneros")
 
 ```
+2.  ¿existe prevalencia de una mutacion sobre un subtipo? 
+
+SUBTIPO
+counts:
+SUBTIPO
+ 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
+     2     22      4      1      2      7    216      5      5      8      9      1 
+percentages:
+SUBTIPO
+ 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
+  0.71   7.80   1.42   0.35   0.71   2.48  76.60   1.77   1.77   2.84   3.19   0.35
+
+>local({.Table <- with(TRAB_GRUP, table(SUBTIPO))cat("\ncounts:\n")print(.Table)cat("\npercentages:\n") print(round(100*.Table/sum(.Table), 2))})
+
+```{r}
+local({.Table <- with(TRAB_GRUP, table(SUBTIPO))cat("\ncounts:\n")print(.Table)cat("\npercentages:\n")print(round(100*.Table/sum(.Table), 2))})```
+En nuestro estudio muestral se realizo un seguimiento a 282 paciente, en referencia al subtipo que presentan queda reflejado en la siguiente grafica.
+
+> with(TRAB_GRUP, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", main="SUBTIPO", col=rainbow_hcl(length(levels(SUBTIPO)))))
+
+```{r}
+with(TRAB_GRUP, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", main="SUBTIPO", 
+  col=rainbow_hcl(length(levels(SUBTIPO)))))
+``````
+
+Como puede observarse El subtipo B es el predominante en la poblacion española con un 76% seguido por las forma recombinante URF de las cuales la mayoritaria de este tipo es la 02_AG siendo un 8% del total y un 71% de las formas URF.
+Todas estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en america y europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B, sin embargo y debido a efectos migratorios. 
+Sin embargo como se denota por los resultados la variante 02_AG se esta incrementad¡ndo en España debido a la migracion africana que recibe nuestro pais, pero a la contra es factible preveer que personas que hayan migrado desde Africa y libres del virus queden infectados por la variante Europea.
+MUTACIONES DE RESISTENCIA A FARMACOS
+counts:
+MUTACIONESPAÑA.DE.RESPAÑAISTENCIA
+ NO  SI 
+183  99 
+percentages:
+MUTACIONESPAÑA.DE.RESPAÑAISTENCIA
+   NO    SI 
+64.89 35.11
+
+>local({
+  .Table <- with(TRAB_GRUP, table(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA)) cat("\ncounts:\n")print(.Table) cat("\npercentages:\n") print(round(100*.Table/sum(.Table), 2))})
+
+```{r}
+local({ .Table <- with(TRAB_GRUP, table(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA))
+cat("\ncounts:\n") print(.Table) cat("\npercentages:\n") print(round(100*.Table/sum(.Table), 2))})
+```
+De las 282 personas trratadas y documentadas para este tipo, solamente en 99 de ellas se les detecto uno o varias mutaciones de resistencia frente a los farmacos anto retrovirales.  
+
+
+> with(TRAB_GRUP, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
++   xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
+
+```{r}
+with(TRAB_GRUP, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
+  xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
+```
+El estudio de las diferentes mutaciones es complejo ya que pueden darse circunstancias de que un paciente presente como un unico tipo de mutacion (proteasas o retrotranscriptasas) o que presenten una colección de ellas.
+Dentro de las mutaciones las mas comunes so las que afectan a las retrotranscriptasas siendo la 103N, la 184V y la 138K las mas comunes.
+Para determinar si existe relación entre ambas variables atenderemos al siguiente contraste de hipótesis:
+Ho: Las dos variables estan relacionadas 
+Ha: Las dos variables son independientes.
+Para determinar esto se realizara un test de independencia Chi Square
+
+
+Frequency table:
+                                 SUBTIPO
+MUTACIONESPAÑA.DE.RESPAÑAISTENCIA 01_AE 02_AG 06_CPX 14_BG 36_CPX  A1   B   C   D  F1   G   J
+                               NO     1    18      3     1      1   4 136   3   3   7   5   1
+                               SI     1     4      1     0      1   3  80   2   2   1   4   0
+
+	Pearson's Chi-squared test
+
+data:  .Table
+X-squared = 7.1991, df = 11, p-value = 0.7827
+En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que subtipo del viris presente el paciente podrá darse o no mutaciones en el mismo. 
+
+local({ .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)
+ cat("\nFrequency table:\n") print(.Table) .Test <- chisq.test(.Table, correct=FALSE)print(.Test)})
+
+```{r}
+local({  .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)  cat("\nFrequency table:\n")  print(.Table)  .Test <- chisq.test(.Table, correct=FALSE)  print(.Test)})
+```
 
 Para representar el resto de los gráficos usamos el paquete lattice. 
 ```{r warning=FALSE}
