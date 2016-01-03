@@ -350,11 +350,12 @@ data:  .Table
 X-squared = 7.1991, df = 11, p-value = 0.7827
 En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que subtipo del viris presente el paciente podrá darse o no mutaciones en el mismo. 
 
-local({ .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)
+>local({ .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)
  cat("\nFrequency table:\n") print(.Table) .Test <- chisq.test(.Table, correct=FALSE)print(.Test)})
 
 ```{r}
-local({  .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)  cat("\nFrequency table:\n")  print(.Table)  .Test <- chisq.test(.Table, correct=FALSE)  print(.Test)})
+local({  .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=TRAB_GRUP)  
+cat("\nFrequency table:\n")  print(.Table)  .Test <- chisq.test(.Table, correct=FALSE)  print(.Test)})
 ```
 
 Para representar el resto de los gráficos usamos el paquete lattice. 
