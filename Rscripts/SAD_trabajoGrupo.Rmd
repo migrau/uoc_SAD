@@ -268,6 +268,7 @@ cat("\npercentages:\n")
 print(round(100*.Table/sum(.Table), 2))
 })
 ```
+
 De las 282 personas trratadas y documentadas para este tipo, solamente en 99 de ellas se les detecto uno o varias mutaciones de resistencia frente a los farmacos anto retrovirales. 
 El estudio de las diferentes mutaciones es complejo ya que pueden darse circunstancias de que un paciente presente como un unico tipo de mutacion (proteasas o retrotranscriptasas) o que presenten una colección de ellas.
 Dentro de las mutaciones las mas comunes so las que afectan a las retrotranscriptasas siendo la 103N, la 184V y la 138K las mas comunes.
@@ -288,6 +289,10 @@ En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto ind
 
 3.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
 
+Para determinar si existe relación entre ambas variables atenderemos al siguiente contraste de hipótesis:
+Ho: Las dos variables estan relacionadas 
+Ha: Las dos variables son independientes.
+
 ```{r}
 local({  
 .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SEXO, data=DATOSCSV) 
@@ -296,7 +301,7 @@ print(rowPercents(.Table))
 prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
 })
 ```
-En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que subtipo del viris presente el paciente podrá darse o no mutaciones en el mismo.
+En este caso se aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que Los hombres son mas propensos a desarrollar mutaciones como que no desarrollarlas..
 
 ### Gráficos
 
