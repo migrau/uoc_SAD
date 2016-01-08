@@ -3,7 +3,7 @@ title: "Software para el Análisis de Datos. Trabajo grupo X."
 author: José Ángel Fernández-Caballero Rico, Elena Tortosa Binacua, Jorge Pulido Lozano,
   Miguel Grau López
 date: "Enero 8, 2015"
-output: word_document
+output: pdf_document
 abstract: |
   Aquí podemos hacer una despripción general de nuestros datos/objetivos.
 ---
@@ -177,8 +177,8 @@ El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Po
 #Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, sep="", 
 #                    na.strings="NA", dec=".", strip.white=TRUE)
 
-Tabla <- read.csv("~/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
-                  header=T, dec=".", na.strings="NA",sep="\t")
+Tabla <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+                  header=T, dec=".", na.strings="NA",sep="")
 
 ```
 
@@ -229,14 +229,9 @@ library(RcmdrMisc)
 numSummary(Tabla[,"CV"], groups=Tabla$SEXO, 
            statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
 
-#Esta linea da error
-#numSummary(Tabla[,"CD4"], groups=Tabla$SEXO, 
-#           statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+numSummary(Tabla[,"CD4"], groups=Tabla$SEXO, 
+           statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
 
-#pruebas temporales
-#CD4lista <- as.character(Tabla[[,"CD4"]])
-#numSummary(CD4lista, groups=Tabla$SEXO, 
-#           statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
 ```
 
 Y en función del **grupo de edad**:
@@ -244,9 +239,8 @@ Y en función del **grupo de edad**:
 numSummary(Tabla[,"CV"], groups=Tabla$edad_cat, 
            statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
 
-#Esta linea da error
-#numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, 
-#           statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
+numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, 
+           statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
 ```
 
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
