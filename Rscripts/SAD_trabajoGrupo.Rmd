@@ -131,8 +131,11 @@ Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54
 
 
 ```{r}
-datosCSV <- read.csv("/home/miquel/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
-                     header=T, dec=".",sep="\t")
+#datosCSV <- read.csv("/home/miquel/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
+#                     header=T, dec=".",sep="\t")
+
+datosCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+                  header=T, dec=".", na.strings="NA",sep="")
 CV<-datosCSV[2]
 ESTADO<-datosCSV[5] 
 with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
@@ -246,8 +249,8 @@ numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat,
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
 ```{r}
-DATOSCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
-                     header=T, dec=".", na.strings="NA",sep="\t")
+DATOSCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+                  header=T, dec=".", na.strings="NA",sep="")
  
 local({
 .Table <- with(DATOSCSV, table(SUBTIPO))
@@ -264,7 +267,7 @@ Sin embargo como se denota por los resultados la variante 02_AG se está increme
 
 ```{r}
 local({ 
-.Table <- with(DATOSCSV, table(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA))
+.Table <- with(DATOSCSV, table(MUTACIONES1))
 cat("\ncounts:\n") 
 print(.Table) 
 cat("\npercentages:\n") 
@@ -282,7 +285,7 @@ Para determinar esto se realizara un test de independencia Chi Square
 
 ```{r warning=FALSE}
 local({  
-.Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=DATOSCSV)  
+.Table <- xtabs(~MUTACIONES1+SUBTIPO, data=DATOSCSV)  
 cat("\nFrequency table:\n")  
 print(.Table)  
 .Test <- chisq.test(.Table, correct=FALSE)  
@@ -298,7 +301,7 @@ Ha: Las dos variables son independientes.
 
 ```{r warning=FALSE}
 local({  
-.Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SEXO, data=DATOSCSV) 
+.Table <- xtabs(~MUTACIONES1+SEXO, data=DATOSCSV) 
 cat("\nPercentage table:\n") 
 print(rowPercents(.Table))  
 prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
@@ -426,11 +429,6 @@ library(colorspace)
 with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", 
                    main="SUBTIPO", col=rainbow_hcl(length(levels(SUBTIPO)))))
 
-with(DATOSCSV, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
+with(DATOSCSV, Barplot(MUTACIONES1, 
                        xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
-```
-
-```{r}
-with(DATOSCSV, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
-  xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
 ```
