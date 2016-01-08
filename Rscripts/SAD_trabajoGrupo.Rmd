@@ -1,14 +1,14 @@
 ---
 title: "Software para el Análisis de Datos. Trabajo grupo X."
-author: Jose Angel Fernandez-Caballero Rico, Elena Tortosa Binacua, Jorge Pulido Lozano,
+author: José Ángel Fernández-Caballero Rico, Elena Tortosa Binacua, Jorge Pulido Lozano,
   Miguel Grau López
-date: "Diciembre 20, 2015"
+date: "Enero 8, 2015"
 output: word_document
 abstract: |
   Aquí podemos hacer una despripción general de nuestros datos/objetivos.
 ---
 
-### Descripción del trabajo.
+# Descripción del trabajo.
 
 1. Buscad un conjunto de datos relacionado con la Bioestadística. Puede ser generado por simulación, pueden ser datos incorporados en un paquete de R (no se usarán los paquetes IRIS, IRIS3) u otros repositorios. Tenéis que explicar la procedencia de estos datos.
 2. Explicad las variables de vuestro fichero, tipo, clasificación, etc... ¡Todo aquello que creáis que es relevante!
@@ -17,38 +17,34 @@ abstract: |
 5. Generad los gráficos que creáis necesarios para resumir de forma gráfica la información que tenéis.
 
 
-### Descripción de las variables
+# Descripción de las variables
 
-*LOCALIDAD*  
-
+###*LOCALIDAD*  
 Esta variable nos informa del Hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
-*CV*
-
+###*CV*
 Mediante esta variable podemos ver la cuantificación de la infección por virus VIH, se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
 
-*CD4* 
-
+###*CD4* 
 Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa cuyo rango es de 2-1.650 cel/ml.
 
-*SEXO:* Sexo del paciente. Hombre-Mujer.
+###*SEXO:* 
+Sexo del paciente. Hombre-Mujer. Variable de tipo cualitativo.
 
-*ESTADO:* Descripción del estado clínico actual del paciente. Tres posibles opciones:
+###*ESTADO:* 
+Descripción del estado clínico actual del paciente (variable de tipo cualitativo). Tres posibles opciones:
 
   1. Naive: Paciente que todavía no han comenzado ningún tratamiento o que empieza a tratarse por primera vez.
   2. Dejó tratamiento: Paciente que ha abandonado el tratamiento. El motivo puede ser de distinta índole (efectos secundarios, desisten por agotamiento etc)
   3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
   
-*EDAD* 
-
+###*EDAD* 
 Esta variable nos informa de la edad de los paciente que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
 
-*NACIONALIDAD* 
-
+###*NACIONALIDAD* 
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
-*SUBTIPO* 
-
+###*SUBTIPO* 
 La diversidad genética del virus de la inmunodeficiencia humana (VIH) constituye un reto para su identificación y caracterización microbiológica.
 La diversidad del VIH y el desarrollo de subtipos es consecuencia de la capacidad del VIH de producir miles de millones de partículas virales al día. La enzima implicada en la replicación viral, la transcriptasa inversa, no es precisa y en ocasiones incorpora errores en el genoma viral, lo que resulta en mutaciones genéticas. Cuanto más se replica el VIH, más probable es que se produzcan errores, aumentando el potencial de que se produzca la variación genética.
 La clasificación en subtipos obedece a las diferentes secuencias de proteínas que caracterizan a los virus en circulación y no al modo en que el sistema inmunológico humano reconoce o reacciona al VIH. Este hecho es especialmente relevante por la introducción de múltiples variantes del VIH como consecuencia de la inmigración o los viajes internacionales
@@ -58,27 +54,37 @@ La prevalencia de suptipos no-B del grupo M del VIH han aumentado en los último
 En España y Portugal la mayoría de los aislados circulantes son del VIH-1, tipo B. La infección del VIH-2 está poco extendida en España, unos cientos de casos la mayoría pertenecientes a inmigrantes africanos del subtipo A, aunque los inmigrantes de Guinea Ecuatorial residentes en nuestro país son portadores del subtipo B
 En la actualidad, más del 20% de las nuevas infecciones por VIH en nuestro país y gran parte de Europa se debe a cepas distintas del VIH-1 subtipo B.
 
-*RESISTENCIA MUTACIONES* (Jorge Pulido)
-
+###*RESISTENCIA MUTACIONES* (Jorge Pulido)
 El VIH es “resistente” a un medicamento cuando continúa multiplicándose mientras el paciente está tomando antirretrovirales (ARVs). El VIH muta casi todas las veces que produce nuevas copias de sí mismo. El virus “tipo salvaje” es la forma más común del VIH. Cualquier otra forma diferente al tipo salvaje es considerada una mutación.
 Cuanto más se multiplica el VIH, más mutaciones aparecen. Tan solo una mutación puede ser suficiente para que el VIH desarrolle resistencia a algunos medicamentos
 La mejor manera de prevenir el desarrollo de resistencia es controlar al VIH con ARVs potentes. Si el paciente se salta la dosis de sus medicamentos, el VIH se multiplicará con mayor facilidad, ocasionando que ocurrirán más mutaciones y algunas de ellas pueden causar la  resistencia.
 Las mutaciones ocurren al azar, diariamente, pero muchas no causan daño. De hecho, en realidad muchas mutaciones ponen al VIH en desventaja – ya que reducen la “capacidad” del virus (lo deterioran) y disminuyen su habilidad para infectar células CD4 en el cuerpo. Sin embargo, algunas mutaciones pueden darle al VIH una ventaja de supervivencia cuando se usan medicamentos contra el VIH, ya que estas mutaciones pueden bloquear a los medicamentos y no los dejan actuar contra las enzimas del VIH a las que deben atacar. Estas son las mutaciones preocupantes cuando hablamos de resistencia a los medicamentos.
 El VIH se vale de varias enzimas para replicarse dentro de la célula humana. También se vale de proteínas, incluyendo la gp41 para adherirse a las células CD4 e infectarlas. Las mutaciones pueden ocurrir en cualquiera de estas partes del virus y causar resistencia a los medicamentos:
+
 •	Transcriptasa reversa: los inhibidores nucleósidos de la transcriptasa reversa (INTR) y los inhibidores no-nucleósidos de la transcriptasa reversa atacan a esta enzima 
+
 •	Integrasa: los inhibidores de la integrasa atacan a esta enzima. 
+
 •	Proteasa: los inhibidores de la proteasa atacan a esta enzima. 
+
 •	gp41: los inhibidores de la fusión atacan a esta proteína de la pared exterior del VIH.
 En las personas con VIH, la resistencia a medicamentos puede hacer que los medicamentos sean menos efectivos o completamente ineficaces, lo que puede reducir de manera importante las opciones de tratamiento.
 Las mutaciones que generan resistencia a los medicamentos para el VIH pueden aparecer antes o durante el tratamiento. A continuación vemos cómo sucede:
+
 •	Transmisión de VIH resistente a medicamentos
+
 •	Durante el tratamiento
 Si existe una "regla de oro" en el tratamiento antirretroviral, es esta: cuanto menor sea la cantidad de virus que hay en el cuerpo, menor será la posibilidad de que el virus continúe reproduciéndose y mutando. Un régimen anti VIH poderoso es la forma más eficaz de mantener al virus en un nivel bajo
 Lamentablemente, existen una serie de factores que pueden evitar que un régimen de medicamentos para el VIH alcance su potencia óptima
+
 •	Una adherencia insuficiente al tratamiento: Omitir algunas dosis o no tomar los medicamentos correctamente puede causar una disminución de la cantidad de medicamento anti VIH en la sangre
+
 •	Mala absorción
+
 •	Farmacocinética variable
+
 Por tanto nada mas detectarse en un paciente la presencia del virus hay que realizar un análisis genotípico y fenotípico para determinar el grado de mutaciones que presenta para realizar una correcta medicación.
+
 1)	Mutaciones que afectan a la retrotranscriptasa
 La retro transcriptasa es la enzima responsable de la replicación del material genético del virus
 EL VIH incorpora mecanismos de resistencia a los fármacos como:
@@ -90,7 +96,7 @@ EL VIH incorpora mecanismos de resistencia a los fármacos como:
 Esta ocasión es el turno de las mutaciones del VIH que confieren resistencia a los inhibidores de la proteasa (IP), Se ha observado con frecuencia una amplia resistencia cruzada a los IP en el VIH que presenta mutaciones en las posiciones 33, 82, 84 y 90 del gen de la proteasa. A este tipo de mutaciones se las conoce como mutaciones universales asociadas a los inhibidores de la proteasa. Se distinguen dos tipos de mutaciones que confieren resistencia a los IP: las mutaciones primarias y las secundarias. Las mutaciones primarias se localizan justo en la enzima de la proteasa del VIH e impiden que los IP se unan a ella. Son mutaciones bastante concretas para cada uno de los fármacos. Las secundarias se localizan fuera del lugar activo de la proteasa y en general aparecen más tarde que las primarias. Por sí solas no causan resistencia a los fármacos, pero permiten al virus adaptarse al efecto producido por la mutación primaria
 Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54, 63, 71, 82, 84 y 90 de la IP pueden provocar una disminución de la susceptibilidad a lopinavir.
 
-### Preguntas objetivo
+# Preguntas objetivo
 
 #### José Angel
 
@@ -119,13 +125,14 @@ Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54
 
 4. Con respecto a las mutacions: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
 
-### Análisis descriptivo
+# Análisis descriptivo
 
-1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
+##1. ¿ Existe diferencia de *Carga viral* entre los pacientes naives y los fracasos?
 
 
 ```{r}
-datosCSV <- read.csv("/home/miquel/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", header=T, dec=".",sep="\t")
+datosCSV <- read.csv("/home/miquel/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
+                     header=T, dec=".",sep="\t")
 CV<-datosCSV[2]
 ESTADO<-datosCSV[5] 
 with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
@@ -156,7 +163,7 @@ t.test(CV~ESTADO, alternative='two.sided', conf.level=.95,
 
 Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias, por tanto, no podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
 
-2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+##2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
 
 ```{r}
 table(datosCSV[1])
@@ -164,12 +171,15 @@ table(datosCSV[1])
 
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
 
-3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? *Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.* 
-Abro la tabla de datos
+##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? *Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.* 
 
 ```{r}
-Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, 
-  sep="", na.strings="NA", dec=".", strip.white=TRUE)
+#Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, sep="", 
+#                    na.strings="NA", dec=".", strip.white=TRUE)
+
+Tabla <- read.csv("~/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
+                  header=T, dec=".", na.strings="NA",sep="\t")
+
 ```
 
 Recodifico la variable edad en una nueva variable categórica llamada **edad_cat**.
@@ -179,8 +189,9 @@ Se considerará:
 		**tercera edad** a lo mayores de 65 años.
 
 ```{r}
+library(car)
 Tabla <- within(Tabla, {
-  edad_cat <- Recode(edad, 
+  edad_cat <- recode(edad, 
   '0:34 = "Joven"; 35:65 = "Adulto"; 66:100 = "Tercera edad"', 
   as.factor.result=TRUE)
 })
@@ -214,28 +225,36 @@ local({
 
 Sumarizo los principales estadísticos de **CV y CD4** en función del **género**:
 ```{r warning=FALSE}
-numSummary(Tabla[,"CV"], groups=Tabla$SEXO, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
-numSummary(Tabla[,"CD4"], groups=Tabla$SEXO, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+library(RcmdrMisc)
+numSummary(Tabla[,"CV"], groups=Tabla$SEXO, 
+           statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
+
+#Esta linea da error
+#numSummary(Tabla[,"CD4"], groups=Tabla$SEXO, 
+#           statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+
+#pruebas temporales
+#CD4lista <- as.character(Tabla[[,"CD4"]])
+#numSummary(CD4lista, groups=Tabla$SEXO, 
+#           statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
 ```
 
 Y en función del **grupo de edad**:
 ```{r warning=FALSE}
-numSummary(Tabla[,"CV"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
-numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
-```
-2.  ¿existe prevalencia de una mutación sobre un subtipo? 
+numSummary(Tabla[,"CV"], groups=Tabla$edad_cat, 
+           statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
 
-SUBTIPO
-counts:
-SUBTIPO
- 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
-     2     22      4      1      2      7    216      5      5      8      9      1 
-percentages:
-SUBTIPO
- 01_AE  02_AG 06_CPX  14_BG 36_CPX     A1      B      C      D     F1      G      J 
-  0.71   7.80   1.42   0.35   0.71   2.48  76.60   1.77   1.77   2.84   3.19   0.35
+#Esta linea da error
+#numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, 
+#           statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
+```
+
+##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
 ```{r}
+DATOSCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
+                     header=T, dec=".", na.strings="NA",sep="\t")
+ 
 local({
 .Table <- with(DATOSCSV, table(SUBTIPO))
 cat("\ncounts:\n")
@@ -245,19 +264,9 @@ print(round(100*.Table/sum(.Table), 2))
 })
 ```
 
-Como puede observarse El subtipo B es el predominante en la poblacion española con un 76% seguido por las forma recombinante URF de las cuales la mayoritaria de este tipo es la 02_AG siendo un 8% del total y un 71% de las formas URF.
-Todas estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en america y europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B, sin embargo y debido a efectos migratorios. 
-Sin embargo como se denota por los resultados la variante 02_AG se esta incrementad¡ndo en España debido a la migracion africana que recibe nuestro pais, pero a la contra es factible preveer que personas que hayan migrado desde Africa y libres del virus queden infectados por la variante Europea.
-
-MUTACIONES DE RESISTENCIA A FARMACOS
-counts:
-MUTACIONESPAÑA.DE.RESPAÑAISTENCIA
- NO  SI 
-183  99 
-percentages:
-MUTACIONESPAÑA.DE.RESPAÑAISTENCIA
-   NO    SI 
-64.89 35.11
+Como puede observarse el subtipo B es el predominante en la población española con un 76% seguido por las forma recombinante URF de las cuales la mayoritaria de este tipo es la 02_AG siendo un 8% del total y un 71% de las formas URF.
+Todos estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en America y Europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B debido a efectos migratorios. 
+Sin embargo como se denota por los resultados la variante 02_AG se está incrementando en España debido a la migración africana que recibe nuestro país, pero a la contra es factible preveer que personas que hayan migrado desde África y libres del virus queden infectados por la variante Europea.
 
 ```{r}
 local({ 
@@ -269,15 +278,15 @@ print(round(100*.Table/sum(.Table), 2))
 })
 ```
 
-De las 282 personas trratadas y documentadas para este tipo, solamente en 99 de ellas se les detecto uno o varias mutaciones de resistencia frente a los farmacos anto retrovirales. 
-El estudio de las diferentes mutaciones es complejo ya que pueden darse circunstancias de que un paciente presente como un unico tipo de mutacion (proteasas o retrotranscriptasas) o que presenten una colección de ellas.
-Dentro de las mutaciones las mas comunes so las que afectan a las retrotranscriptasas siendo la 103N, la 184V y la 138K las mas comunes.
+De las 282 personas tratadas y documentadas para este tipo, solamente en 99 de ellas se les detectó una o varias mutaciones de resistencia frente a los fármacos anti retrovirales. 
+El estudio de las diferentes mutaciones es complejo ya que pueden darse circunstancias de que un paciente presente un único tipo de mutación (proteasas o retrotranscriptasas) o que presente una colección de ellas.
+Dentro de las mutaciones las más comunes son las que afectan a las retrotranscriptasas siendo la 103N, la 184V y la 138K las más comunes.
 Para determinar si existe relación entre ambas variables atenderemos al siguiente contraste de hipótesis:
-Ho: Las dos variables estan relacionadas 
+Ho: Las dos variables están relacionadas 
 Ha: Las dos variables son independientes.
 Para determinar esto se realizara un test de independencia Chi Square
 
-```{r}
+```{r warning=FALSE}
 local({  
 .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SUBTIPO, data=DATOSCSV)  
 cat("\nFrequency table:\n")  
@@ -285,15 +294,15 @@ print(.Table)
 .Test <- chisq.test(.Table, correct=FALSE)  
 print(.Test)})
 ```
-En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que subtipo del viris presente el paciente podrá darse o no mutaciones en el mismo. 
+En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que subtipo del virus presente el paciente podrá darse o no mutaciones en el mismo. 
 
-3.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
+##5.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
 
 Para determinar si existe relación entre ambas variables atenderemos al siguiente contraste de hipótesis:
 Ho: Las dos variables estan relacionadas 
 Ha: Las dos variables son independientes.
 
-```{r}
+```{r warning=FALSE}
 local({  
 .Table <- xtabs(~MUTACIONESPAÑA.DE.RESPAÑAISTENCIA+SEXO, data=DATOSCSV) 
 cat("\nPercentage table:\n") 
@@ -301,11 +310,11 @@ print(rowPercents(.Table))
 prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
 })
 ```
-En este caso se aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que Los hombres son mas propensos a desarrollar mutaciones como que no desarrollarlas..
+En este caso aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que los hombres son más propensos a desarrollar mutaciones como que no desarrollarlas..
 
-### Gráficos
+# Gráficos
 
-1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
+##1. ¿ Existe diferencia de carga viral entre los pacientes naives y los fracasos?
 
 ```{r}
 plot(datosCSV[1], cex.names =0.4)
@@ -315,41 +324,27 @@ plot(datosCSV[1], cex.names =0.4)
 boxplot(CV~ESTADO, data=datosCSV, id.method="y")
 ```
 
-2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+##2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
 
 ```{r}
 with(datosCSV, pie(table(LOCALIDAD), labels=levels(LOCALIDAD), xlab="", 
   ylab="", main="Pacientes según hospital"))
 ```
 
-Para saber mas acerca de como estan distribuidas las nacionalidades de los pacientes VIH podemos hacer la siguiente grafica. Donde se observa ( como era de esperar) que la nacionalidad Española es la mas comun. 
+Para saber más acerca de cómo están distribuidas las nacionalidades de los pacientes VIH podemos hacer la siguiente gráfica, donde se observa (como era de esperar) que la nacionalidad Española es la más común. 
 
 ```{r}
 with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="", 
                    ylab="", main="Frecuencia pacientes según nacionalidad"))
 ```
 
-
-Ejemplo de como agregar gráficos en el informe: 
-
-```{r}
-summary(cars)
-```
-
-Por ejemplo:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-`echo = FALSE` evita mostrar el código que genera el gráfico.
-
-3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente?
+##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente?
 Represento las proporciones de la población de los grupos según el **grupo de edad** y el  **género**:
 
 ```{r warning=FALSE}
 layout ( matrix (c(1 ,2) , 1, 2, byrow = TRUE ))
-pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), xlab="", ylab="", main="Grupos de edad")
+pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), xlab="", ylab="", 
+    main="Grupos de edad")
 pie(table(Tabla$SEXO), labels=levels(Tabla$SEXO), xlab="", ylab="", main="Géneros")
 
 ```
@@ -365,12 +360,14 @@ Represento los niveles de **CV** en función del **género**.
 
     > Diagrama de cajas
 ```{r warning=FALSE}
-bwplot(factor(SEXO) ~ CV, data = Tabla, xlab="cp/ml", main = "Carga viral en función del género")
+bwplot(factor(SEXO) ~ CV, data = Tabla, xlab="cp/ml", 
+       main = "Carga viral en función del género")
 ```
 
     > Función de densidad
 ```{r warning=FALSE}
-densityplot(~ CV, data = Tabla, groups = SEXO, plot.points=FALSE, auto.key=TRUE, main= "Carga viral en función del género",  xlab="cp/ml" )
+densityplot(~ CV, data = Tabla, groups = SEXO, plot.points=FALSE, 
+            auto.key=TRUE, main= "Carga viral en función del género",  xlab="cp/ml" )
 ```
 
 Se puede ver como, a pesar de no haber grandes diferencias en las medias de los diferentes grupos, la distribución varía un poco. En mujeres la población es más homogénea, habiendo un mayor número de casos alrededor de la media. Por el contrario, en hombres se puede ver que hay una mayor variabilidad, encontrando casos con un mayor número de carga viral en sangre. 
@@ -379,15 +376,17 @@ Represento los niveles de **CD4** en función del **género**:
 
     > Diagrama de cajas
 ```{r warning=FALSE}
-bwplot(factor(SEXO)~ CD4, data = Tabla, xlab="cel/ml", main = "Niveles de CD4 en función del género")
+bwplot(factor(SEXO)~ CD4, data = Tabla, xlab="cel/ml", 
+       main = "Niveles de CD4 en función del género")
 ```
 
     > Función de densidad
 ```{r warning=FALSE}
-densityplot(~ CD4, data = Tabla, groups = SEXO, plot.points=FALSE, auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
+densityplot(~ CD4, data = Tabla, groups = SEXO, plot.points=FALSE, 
+            auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
 ```
 
-Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos sexos.Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
+Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos sexos. Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
 
 **2. CV y CD4 según edad.**
 
@@ -397,12 +396,14 @@ Represento los niveles de **CV** en función de la **edad**:
 
     > Diagrama de cajas
 ```{r warning=FALSE}
-bwplot(factor(edad_cat)~ CV , data = Tabla, xlab="cp/ml", main = "Carga viral en función de la edad")
+bwplot(factor(edad_cat)~ CV , data = Tabla, xlab="cp/ml", 
+       main = "Carga viral en función de la edad")
 ```
 
     > Función de densidad
 ```{r warning=FALSE}
-densityplot(~ CV, data = Tabla, groups = edad_cat, plot.points=FALSE, auto.key=TRUE, main= "Carga viral en función de la edad",  xlab="cp/ml" )
+densityplot(~ CV, data = Tabla, groups = edad_cat, plot.points=FALSE, 
+            auto.key=TRUE, main= "Carga viral en función de la edad",  xlab="cp/ml" )
 ```
 
 Se puede ver que no hay grandes diferencias en las medias de los diferentes grupos. Sin embargo, la distribución varía. En el grupo de la tercera edad se puede var que los datos son mucho más homogéneos comparados con el grupo de jóvenes. Sin embargo, hay que tener en cuenta que el número de individuos en el grupo de la tercera edad es de únicamente 4. Si comparamos el grupo de jóvenes con el de adultos de puede ver que los valores de CV son mucho más homogéneos en gente joven.
@@ -416,23 +417,24 @@ bwplot(factor(edad_cat)~ CD4, data = Tabla, main= "Niveles de CD4 en función de
 
     > Función de densidad
 ```{r warning=FALSE}
-densityplot(~ CD4, data = Tabla, groups = edad_cat, plot.points=FALSE, auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
+densityplot(~ CD4, data = Tabla, groups = edad_cat, plot.points=FALSE, 
+            auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
 ```
 
-Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos grupos de edad.A igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adulto y en joven el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
+Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos grupos de edad. Al igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adultos y en jóvenes el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
 
 Parece que, mientras que en gente jóven los niveles de DC4 y CV son más homogéneos, en adultos existe una mayor variabilidad.
 
-2.  ¿existe prevalencia de una mutación sobre un subtipo? 
+##4.  ¿Existe prevalencia de una mutación sobre un subtipo? 
 
 ```{r}
-with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", main="SUBTIPO", 
-  col=rainbow_hcl(length(levels(SUBTIPO)))))
-```
-> with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", main="SUBTIPO", col=rainbow_hcl(length(levels(SUBTIPO)))))
+library(colorspace)
+with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", 
+                   main="SUBTIPO", col=rainbow_hcl(length(levels(SUBTIPO)))))
 
-> with(DATOSCSV, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
-+   xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
+with(DATOSCSV, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
+                       xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
+```
 
 ```{r}
 with(DATOSCSV, Barplot(MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, 
