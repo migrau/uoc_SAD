@@ -297,11 +297,11 @@ qqnorm(CV_Adulto$CV);qqline(CV_Adulto$CV, col = 2)
 qqnorm(CV_Tercera_edad$CV);qqline(CV_Tercera_edad$CV, col = 2)
 ```
 
-Sabiendo que los datos no siguen una distribución normal aplicaré el test Kruskal Wallis:
+Sabiendo que los datos no siguen una distribución normal aplicaré el test de Wilcoxon cuando comparamos los grupos de género y el test Kruskal Wallis para los grupos de edad:
 
 ```{r}
-kruskal.test(CD4 ~ SEXO, data=Tabla)
-kruskal.test(CV ~ SEXO, data=Tabla)
+wilcox.test(CD4 ~ SEXO, data=Tabla)
+wilcox.test(CV ~ SEXO, data=Tabla)
 
 kruskal.test(CD4 ~ edad_cat, data=Tabla)
 kruskal.test(CV ~ edad_cat, data=Tabla)
