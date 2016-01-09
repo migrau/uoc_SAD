@@ -39,7 +39,7 @@ Descripción del estado clínico actual del paciente (variable de tipo cualitati
   3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
   
 ###*EDAD* 
-Esta variable nos informa de la edad de los paciente que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
+Esta variable nos informa de la edad de los pacientes que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
 
 ###*NACIONALIDAD* 
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
@@ -174,7 +174,8 @@ table(datosCSV[1])
 
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
 
-##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? *Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.* 
+##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? 
+* Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección. * 
 
 ```{r}
 #Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, sep="", 
@@ -245,6 +246,69 @@ numSummary(Tabla[,"CV"], groups=Tabla$edad_cat,
 numSummary(Tabla[,"CD4"], groups=Tabla$edad_cat, 
            statistics=c("mean", "sd", "IQR", "quantiles"),quantiles=c(0,.25,.5,.75,1))
 ```
+
+A continuación voy a comprobar si las diferencias que se observan en CV y CD4 entre los distintos grupos de género y edad son significativas.
+
+Primero compruebo si los datos poseen una distribución normal aplicando el test de Shapiro-Wilk.
+
+```{r}
+CD4_hombre <- subset (Tabla, SEXO=HOMBRE) 
+CD4_mujer <- subset (Tabla, SEXO=MUJER)
+shapiro.test(CD4_hombre$CD4)
+shapiro.test(CD4_mujer$CD4)
+
+CV_hombre <- subset (Tabla, SEXO=HOMBRE) 
+CV_mujer <- subset (Tabla, SEXO=MUJER)
+shapiro.test(CV_hombre$CV)
+shapiro.test(CV_mujer$CV)
+
+CD4_Joven <- subset (Tabla, edad_cat=Joven)
+CD4_Adulto <- subset (Tabla, edad_cat=Adulto)
+CD4_Tercera_edad <- subset (Tabla, edad_cat=Tercera_edad)
+shapiro.test(CD4_Joven$CD4)
+shapiro.test(CD4_Adulto$CD4)
+shapiro.test(CD4_Tercera_edad$CD4)
+
+CV_Joven <- subset (Tabla, edad_cat=Joven)
+CV_Adulto <- subset (Tabla, edad_cat=Adulto)
+CV_Tercera_edad <- subset (Tabla, edad_cat=Tercera_edad)
+shapiro.test(CV_Joven$CV)
+shapiro.test(CV_Adulto$CV)
+shapiro.test(CV_Tercera_edad$CV)
+
+```
+
+En todos los casos el p-value es menor que 0.05, por lo que rechazo la hipótesis nula de que los datos poseen una distribución normal.
+Para comprobarlo de forma visual, represento qqplots.
+
+```{r}
+par(mfrow=c(2,2))
+qqnorm(CD4_hombre$CD4);qqline(CD4_hombre$CD4, col = 2)
+qqnorm(CD4_mujer$CD4);qqline(CD4_mujer$CD4, col = 2)
+qqnorm(CV_hombre$CV);qqline(CV_hombre$CV, col = 2)
+qqnorm(CV_mujer$CV);qqline(CV_mujer$CV, col = 2)
+
+par(mfrow=c(3,2))
+qqnorm(CD4_Joven$CD4);qqline(CD4_Joven$CD4, col = 2)
+qqnorm(CD4_Adulto$CD4);qqline(CD4_Adulto$CD4, col = 2)
+qqnorm(CD4_Tercera_edad$CD4);qqline(CD4_Tercera_edad$CD4, col = 2)
+qqnorm(CV_Joven$CV);qqline(CV_Joven$CV, col = 2)
+qqnorm(CV_Adulto$CV);qqline(CV_Adulto$CV, col = 2)
+qqnorm(CV_Tercera_edad$CV);qqline(CV_Tercera_edad$CV, col = 2)
+```
+
+Sabiendo que los datos no siguen una distribución normal aplicaré el test Kruskal Wallis:
+
+```{r}
+kruskal.test(CD4 ~ SEXO, data=Tabla)
+kruskal.test(CV ~ SEXO, data=Tabla)
+
+kruskal.test(CD4 ~ edad_cat, data=Tabla)
+kruskal.test(CV ~ edad_cat, data=Tabla)
+
+```
+
+En todos los casos el p-value es superior a 0.05, por lo que no podemos rechazar la hipótesis nula de que no hay diferencias entre los diferentes grupos de género o edad.
 
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
@@ -420,7 +484,7 @@ densityplot(~ CD4, data = Tabla, groups = edad_cat, plot.points=FALSE,
 
 Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos grupos de edad. Al igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adultos y en jóvenes el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
 
-Parece que, mientras que en gente jóven los niveles de DC4 y CV son más homogéneos, en adultos existe una mayor variabilidad.
+Parece que, mientras que en gente jóven los niveles de CD4 y CV son más homogéneos, en adultos existe una mayor variabilidad.
 
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo? 
 
