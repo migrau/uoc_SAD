@@ -98,32 +98,37 @@ Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54
 
 # Preguntas objetivo
 
+Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo de obtener conclusiones relevantes de éste. Las preguntas planteadas por cada componente del grupo son (remarcadas la elegidas a desarrollar): 
 #### José Angel
 
-1. ¿ Existe diferencia de Carga viral entre los pacientes naives y los fracasos?
-2. ¿ Que subtipo VIH predomina en cada nacionalidad?
-3. ¿ Como se distribuye en % la infeccion VIH entre mujeres y hombres?
-4. ¿ Las mutaciones de resistecia se da en pacientes naives o en fracasos?
-5. ¿ Que mutación es la mas prevalente?
-6. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+1. *¿Existe diferencia de Carga viral entre los pacientes naives y los fracasos?*
+2. ¿Qué subtipo VIH predomina en cada nacionalidad?
+3. ¿Cómo se distribuye en % la infeccion VIH entre mujeres y hombres?
+4. ¿Las mutaciones de resistecia se da en pacientes naives o en fracasos?
+5. ¿Que mutación es la más prevalente?
+6. *¿Cómo se distribuyen los individuos en los hospitales de procedencia?*
 
 #### Jorge Pulido
 
-1.  ¿quien son mas propensos a dejar el tto: hombre o mujeres? (facilona)
-2.  ¿existe prevalencia de una mutacion sobre un subtipo? (ya propuesta)
-3.  ¿relacion entre la nacionalidad y el subtipo? (ya propueta)
-4.  ¿relacion entre la nacionalidad y estado del tto? (ver si ciertas nacionalidades quedan excluidas o no)
-5.  ¿relacion entre la cv y los CD4?
+1. ¿Quiénes son más propensos a dejar el tratamiento: hombres o mujeres?
+2. *¿Existe prevalencia de una mutación sobre un subtipo?*
+3. ¿Relación entre la nacionalidad y el subtipo?
+4. ¿Relación entre la nacionalidad y estado del tratamiento?
+5. ¿Relación entre la carga viral y los CD4?
+6. *¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?*
 
 #### Elena
 
-1. Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? No sé si puede tener sentido que el virus se replique más en hombras o mujeres, o en gente joven o más mayor.
-
-2. Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4? Para la edad podríamos hacer disferentes categorias como menores de 25, entre 25-40, entre 40 y 65 y mayores de 65. O algo así...
-
+1. *Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? ¿Es posible que el virus se replique más en hombras o mujeres, o en gente joven o más mayor?*
+2. *Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4?*
 3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+4. Con respecto a las mutaciones: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
 
-4. Con respecto a las mutacions: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
+#### Miquel
+
+1.
+2.
+
 
 # Análisis descriptivo
 
