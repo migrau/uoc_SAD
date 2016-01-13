@@ -98,7 +98,8 @@ Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54
 
 # Preguntas objetivo
 
-Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo de obtener conclusiones relevantes de éste. Las preguntas planteadas por cada componente del grupo son (remarcadas la elegidas a desarrollar): 
+Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo de obtener conclusiones relevantes de éste. Las preguntas planteadas por cada componente del grupo son (en cursiva las elegidas a desarrollar): 
+
 #### José Angel
 
 1. *¿Existe diferencia de Carga viral entre los pacientes naives y los fracasos?*
@@ -107,6 +108,13 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 4. ¿Las mutaciones de resistecia se da en pacientes naives o en fracasos?
 5. ¿Que mutación es la más prevalente?
 6. *¿Cómo se distribuyen los individuos en los hospitales de procedencia?*
+
+#### Elena
+
+1. *Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? ¿Es posible que el virus se replique más en hombras o mujeres, o en gente joven o más mayor?*
+2. *Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4?*
+3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+4. Con respecto a las mutaciones: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
 
 #### Jorge Pulido
 
@@ -117,17 +125,10 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 5. ¿Relación entre la carga viral y los CD4?
 6. *¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?*
 
-#### Elena
-
-1. *Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? ¿Es posible que el virus se replique más en hombras o mujeres, o en gente joven o más mayor?*
-2. *Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4?*
-3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
-4. Con respecto a las mutaciones: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
-
 #### Miquel
 
-1.
-2.
+1. *Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.*
+2. *¿Relación entre la carga viral y los CD4?*
 
 
 # Análisis descriptivo
@@ -139,7 +140,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 #datosCSV <- read.csv("/home/miquel/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
 #                     header=T, dec=".",sep="\t")
 
-datosCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+datosCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
                   header=T, dec=".", na.strings="NA",sep="")
 CV<-datosCSV[2]
 ESTADO<-datosCSV[5] 
@@ -180,13 +181,14 @@ table(datosCSV[1])
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
 
 ##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? 
+
 * Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección. * 
 
 ```{r}
 #Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, sep="", 
 #                    na.strings="NA", dec=".", strip.white=TRUE)
 
-Tabla <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+Tabla <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
                   header=T, dec=".", na.strings="NA",sep="")
 
 ```
@@ -318,7 +320,7 @@ En todos los casos el p-value es superior a 0.05, por lo que no podemos rechazar
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
 ```{r}
-DATOSCSV <- read.csv("~/tmp/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+DATOSCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
                   header=T, dec=".", na.strings="NA",sep="")
  
 local({
@@ -376,7 +378,77 @@ print(rowPercents(.Table))
 prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
 })
 ```
-En este caso aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que los hombres son más propensos a desarrollar mutaciones como que no desarrollarlas..
+En este caso aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que los hombres son más propensos a desarrollar mutaciones como que no desarrollarlas.
+
+##6. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+
+En primer lugar, comprobamos cómo de diferentes son los valores para cada subtipo. 
+
+En cuanto a carga viral:
+
+```{r warning=FALSE}
+numSummary(Tabla[,"CV"], groups=Tabla$SUBTIPO,
+statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,1))
+```
+
+Sí que vemos diferencias dependiendo del subtipo. El subtipo con mayor carga viral es *06_CPX* con diferencia (302200). El que menos, el subtipo *C* (27403).
+
+Y respecto a CD4:
+```{r warning=FALSE}
+numSummary(Tabla[,"CD4"], groups=Tabla$SUBTIPO,
+statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,1))
+```
+
+Para el caso de CD4, no hay grandes diferencias con lo que podemos concluir que los distintos subtipos no parecen indicar un mayor o menor número de linfocitos T-CD4.
+
+Para comprobar si estas diferencias son significativas, podemos utilizar la prueba de [Kruskal-Wallis](https://es.wikipedia.org/wiki/Prueba_de_Kruskal-Wallis):
+
+```{r warning=FALSE}
+kruskal.test(CD4 ~ SUBTIPO, data=Tabla)
+
+kruskal.test(CV ~ SUBTIPO, data=Tabla)
+
+```
+
+Se analizan los datos con el fin de comprobar si existen diferencias sustanciales entre ellos (o dicho de otra manera, si todos los datos pueden pertener a una misma población). En este caso dado que p-value es superior a 0.05 podemos afirmar que no existen diferencias importantes.
+
+```{r warning=FALSE}
+Table <- xtabs(CV~SUBTIPO, data=Tabla)
+Table
+Test <- chisq.test(Table, correct=FALSE)
+Test
+```
+
+##7. ¿Relación entre la carga viral y los CD4?
+
+Comprobamos el [índice de correlación](http://www.r-tutor.com/elementary-statistics/numerical-measures/correlation-coefficient):
+```{r warning=FALSE}
+cor(Tabla[,"CV"], Tabla[,"CD4"], use="complete")
+```
+El valor es negativo próximo a 0 por lo que ambas variables estan negativamente relacionadas (es decir, que cuando una se incrementa la otra decrece) pero débilmente (el valor es próximo a 0). 
+
+Si agrupamos los valores de CD4 para encontrar una relación con la carga viral:
+```{r warning=FALSE}
+
+Tabla <- within(Tabla, {
+CD4_group <- recode(CD4,
+'0:200 = "Muy Bajo"; 200:400 = "Bajo"; 400:600 = "Medio"; 600:800 = "Alto"; 800:1100 = "Muy alto"',
+as.factor.result=TRUE)
+})
+
+local({
+.Table <- with(Tabla, table(CD4_group))
+cat("\ncounts:\n")
+print(.Table)
+cat("\npercentages:\n")
+print(round(100*.Table/sum(.Table), 2))
+})
+
+numSummary(Tabla[,"CV"], groups=Tabla$CD4_group, 
+           statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
+ 
+```
+
 
 # Gráficos
 
