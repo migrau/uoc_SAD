@@ -20,9 +20,9 @@ Abstract: "A partir de un dataset real con datos de pacientes con el virus VIH s
 
 # Conjunto de datos
 
-El conjunto de datos proceden de la base de datos del hospital de Sevilla, en concreto del servicio de Infecciosos. Estos datos recogen variables socio-demográficas de pacientes infectados con VIH. La Base de Datos (BdD) está protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos. Además sólo podrán acceder a la BdD los investigadores implicados en el proyecto. Cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes y en esta última BdD el acceso estará permitido unicamente al Investigador principal. 
+El conjunto de datos proceden de la base de datos del hospital de Sevilla, en concreto del servicio de Enfermedades Infecciosas. Estos datos recogen variables socio-demográficas de pacientes infectados con VIH. La Base de Datos (BdD) está protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos. Además sólo podrán acceder a la BdD los investigadores implicados en el proyecto. Cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes y en esta última BdD el acceso estará permitido unicamente al Investigador principal. 
 
-Todos los investigadores se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de Diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de Noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
+Todos los investigadores que accedan a esta base se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de Diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de Noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
 
 # Descripción de las variables
 
