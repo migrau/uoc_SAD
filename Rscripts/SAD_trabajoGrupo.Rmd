@@ -540,6 +540,13 @@ with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="",
 with(DATOSCSV, Barplot(MUTACIONES1, 
                        xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
 ```
+##5.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
+
+```{r}
+with(DATOSCSV, plotMeans(edad, MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, error.bars="se"))
+```
+
+Como puede observarse la media de edad de los pacientes que no presentan mutaciones de resistencia a farmacos es menor que la de aquellos que si presentan variantes del virus con resistencia a ciertos antiretrovirales. 
 
 ##6. ¿Hay alguna relación entre el subtipo y el CD4/CV?
 
