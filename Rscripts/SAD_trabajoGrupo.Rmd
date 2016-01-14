@@ -1,5 +1,5 @@
 ---
-title: "Software para el Análisis de Datos. Trabajo grupo X."
+title: "Software para el Análisis de Datos. Trabajo del grupo X."
 author: "José Ángel Fernández-Caballero, Elena Tortosa, Jorge Pulido, Miguel Grau"
 date: "Enero 15, 2015"
 output: word_document
@@ -29,17 +29,17 @@ Todos los investigadores que accedan a esta base se comprometen a respetar la co
 ####*LOCALIDAD:*  
 Esta variable nos informa del hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
-####*CV:*
+####*Carga viral (CV):*
 Mediante esta variable podemos ver la cuantificación de la infección por virus VIH. Se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa de tipo continuo. Su rango es de 34-10.000.00 copias/ml.
 
 ####*CD4:* 
 Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa de tipo continuo cuyo rango es de 2-1.650 cel/ml.
 
 ####*SEXO:* 
-Sexo del paciente. Hombre-Mujer. Variable de tipo cualitativo.
+Esta variable nos informa del sexo del paciente. Es una variable de tipo cualitativo nominal, y puede ser tomar dos valore diferentes :hombre o mujer.
 
 ####*ESTADO:* 
-Descripción del estado clínico actual del paciente (variable de tipo cualitativo). Tres posibles opciones:
+Descripción del estado clínico actual del paciente (variable de tipo cualitativo). Presenta tres posibles opciones:
 
   1. Naive: Paciente que todavía no han comenzado ningún tratamiento o que empieza a tratarse por primera vez.
   2. Dejó tratamiento: Paciente que ha abandonado el tratamiento. El motivo puede ser de distinta índole (efectos secundarios, desisten por agotamiento etc)
@@ -67,7 +67,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 #### José Angel
 
-1. *¿Existe diferencia de Carga viral entre los pacientes naives y los fracasos?*
+1. *¿Existe diferencia de carga viral entre los pacientes naives y los fracasos?*
 2. ¿Qué subtipo VIH predomina en cada nacionalidad?
 3. ¿Cómo se distribuye en % la infeccion VIH entre mujeres y hombres?
 4. ¿Las mutaciones de resistecia se da en pacientes naives o en fracasos?
@@ -78,7 +78,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 1. *Con respecto a la carga viral: ¿Hay algún tipo de relación entre la edad o el sexo y la carga viral? ¿Es posible que el virus se replique más en hombras o mujeres, o en gente joven o más mayor?*
 2. *Con respecto a los niveles de CD4: ¿Hay algún tipo de relación entre la edad o el sexo y los niveles de cd4? ¿Responde mejor el sistema inmune de hombres o mujeres frente a la infección por el virus?¿Hay alguna diferencia entre gente joven o mayor respecto a los niveles de CD4?*
-3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+3. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el estado/CD4/carga viral? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
 4. Con respecto a las mutaciones: ¿Hay alguna mutación que induzca una mayor carga viral?¿Y una mayor respuesta del sistema inmune?
 
 #### Jorge Pulido
@@ -92,8 +92,8 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 #### Miquel
 
-1. *¿Hay alguna relación entre el subtipo y el CD4/CV?*
-2. *¿Relación entre la carga viral y los CD4?*
+1. *¿Hay alguna relación entre el subtipo y el CD4/carga viral?*
+2. *¿Existe alguna relación entre la carga viral y los CD4?*
 
 
 # Análisis descriptivo
@@ -112,18 +112,18 @@ with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
 ```
 
 
-Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa. Para ello, vamos a calcular un t-test:
+Observamos que la media de carga viral (CV) en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa. Para ello, vamos a calcular un t-test:
 
 ```{r}
-#Si previamente, filtramos datosCSV para seleccionar unicamente los casos
-#fracaso-naive, sí que podemos ejecutar el t.test
+#Previamente, filtramos datosCSV para seleccionar unicamente los casos
+#fracaso-naive y ejecutamos el t.test
 datosCSV_fracaso_naive <- subset(datosCSV, 
                           datosCSV$ESTADO == "FRACASO" | datosCSV$ESTADO == "NAIVE")
 t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, 
        var.equal=FALSE, data=datosCSV_fracaso_naive)
 ```
 
-Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias. No podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
+Obtenemos un p-valor inferior a 0.05. Por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias. No podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
 
 ##2. ¿ Cómo se distribuyen los individuos en los hospitales de procedencia?
 
@@ -133,7 +133,7 @@ table(datosCSV[1])
 
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
 
-##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? 
+##3. ¿Existe algún tipo de relación entre la carga viral o los niveles de CD4, y el sexo o la edad del paciente? 
 
 Esto nos daría una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.
 
@@ -185,7 +185,7 @@ local({
 
 ```
 
-Sumarizo los principales estadísticos de **CV y CD4** en función del **género**:
+Sumarizo los principales estadísticos de **carga viral (CV) y CD4** en función del **género**:
 ```{r warning=FALSE}
 library(RcmdrMisc)
 numSummary(Tabla[,"CV"], groups=Tabla$SEXO, 
@@ -236,7 +236,7 @@ shapiro.test(CV_Tercera_edad$CV)
 
 ```
 
-En todos los casos el p-value es menor que 0.05, por lo que rechazo la hipótesis nula de que los datos poseen una distribución normal.
+En todos los casos el p-valor es menor que 0.05, por lo que rechazo la hipótesis nula de que los datos poseen una distribución normal.
 Para comprobarlo de forma visual, represento qqplots.
 
 ```{r}
@@ -266,7 +266,7 @@ kruskal.test(CV ~ edad_cat, data=Tabla)
 
 ```
 
-En todos los casos el p-value es superior a 0.05, por lo que no podemos rechazar la hipótesis nula de que no hay diferencias entre los diferentes grupos de género o edad.
+En todos los casos el p-valor es superior a 0.05, por lo que no podemos rechazar la hipótesis nula de que no hay diferencias entre los diferentes grupos de género o edad.
 
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
@@ -285,7 +285,7 @@ print(round(100*.Table/sum(.Table), 2))
 
 Como puede observarse el subtipo B es el predominante en la población española con un 76% seguido por las forma recombinante URF de las cuales la mayoritaria de este tipo es la 02_AG siendo un 8% del total y un 71% de las formas URF.
 Todos estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en América y Europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B debido a efectos migratorios. 
-Sin embargo como se denota por los resultados la variante 02_AG se está incrementando en España debido a la migración africana que recibe nuestro país, pero a la contra es factible preveer que personas que hayan migrado desde África y libres del virus queden infectados por la variante Europea.
+Sin embargo, como se denota por los resultados la variante 02_AG, se está incrementando en España debido a la migración africana que recibe nuestro país, pero a la contra es factible preveer que personas que hayan migrado desde África y libres del virus queden infectados por la variante Europea.
 
 ```{r}
 local({ 
@@ -333,20 +333,20 @@ prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
 ```
 En este caso aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que los hombres son más propensos a desarrollar mutaciones como que no desarrollarlas.
 
-##6. ¿Hay alguna relación entre el subtipo y el CD4/CV? 
+##6. ¿Hay alguna relación entre el subtipo y el CD4/carga viral? 
 
-El objetivo que buscamos con esta pregunta es saber si hay algun subtipo más agresivo que otro (reflejándose en mayores niveles de carga viral) o si algun subtipo produce una mayor respuesta del sistema inmune (niveles de CD4).
+El objetivo que buscamos con esta pregunta es saber si hay algun subtipo más agresivo que otro (reflejándose en mayores niveles de carga viral(CV)) o si algun subtipo produce una mayor respuesta del sistema inmune (niveles de CD4).
 
 En primer lugar, comprobamos cómo de diferentes son los valores para cada subtipo. 
 
-En cuanto a carga viral:
+En cuanto a CV:
 
 ```{r warning=FALSE}
 numSummary(Tabla[,"CV"], groups=Tabla$SUBTIPO,
 statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,1))
 ```
 
-Sí que vemos diferencias dependiendo del subtipo. El subtipo con mayor carga viral es *06_CPX* con diferencia (302200). El que menos, el subtipo *C* (27403).
+Sí que vemos diferencias dependiendo del subtipo. El subtipo con mayor CV es *06_CPX* con diferencia (302200). El que menos, el subtipo *C* (27403).
 
 Y respecto a CD4:
 ```{r warning=FALSE}
@@ -365,7 +365,7 @@ kruskal.test(CV ~ SUBTIPO, data=Tabla)
 
 ```
 
-Se analizan los datos con el fin de comprobar si existen diferencias sustanciales entre ellos (o dicho de otra manera, si todos los datos pueden pertener a una misma población). En este caso dado que p-value es superior a 0.05 podemos afirmar que no existen diferencias importantes entre el subtipo y el CD4 o CV, es decir aceptamos la Hipotesis nula. 
+Se analizan los datos con el fin de comprobar si existen diferencias sustanciales entre ellos (o dicho de otra manera, si todos los datos pueden pertener a una misma población). En este caso, dado que p-valor es superior a 0.05 podemos afirmar que no existen diferencias importantes entre el subtipo y el CD4 o CV, es decir aceptamos la Hipotesis nula. 
 
 Como último test, utilizamos el algortimo [Chi-cuadrado](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_%CF%87%C2%B2). 
 
@@ -376,12 +376,12 @@ Test <- chisq.test(Table, correct=FALSE)
 Test
 ```
 
-En este caso, el valor p es inferior a 0.05 por lo que podemos rechazar la hipotesis nula y aceptar la alternativa, es decir, que sí que esta relacionado el nivel de carga viral con el subtipo. Este resultado se contradice con el de Kruskal-Wallis por lo que no estoy completamente seguro de si el Chi-cuadrado esta aplicado correctamente. El algoritmo debe ser aplicado sobre variables cualitativas y en nuestro caso SUBTIPO sí lo es pero no CV. 
+En este caso, el p-valor es inferior a 0.05 por lo que podemos rechazar la hipotesis nula y aceptar la alternativa, es decir, que sí que esta relacionado el nivel de carga viral con el subtipo. Este resultado se contradice con el de Kruskal-Wallis por lo que no estoy completamente seguro de si el Chi-cuadrado esta aplicado correctamente. El algoritmo debe ser aplicado sobre variables cualitativas y en nuestro caso SUBTIPO sí lo es pero no CV. 
 
 Fuentes:
 http://es.slideshare.net/navarroenrique/gua-contraste-de-hiptesis-blog
 
-##7. ¿Relación entre la carga viral y los CD4?
+##7. ¿Existe alguna relación entre la carga viral y los CD4?
 
 Comprobamos el [índice de correlación](http://www.r-tutor.com/elementary-statistics/numerical-measures/correlation-coefficient):
 
@@ -391,7 +391,7 @@ cor(Tabla[,"CV"], Tabla[,"CD4"], use="complete")
 
 El valor es negativo próximo a 0 por lo que ambas variables estan negativamente relacionadas (es decir, que cuando una se incrementa la otra decrece) pero débilmente (el valor es próximo a 0). 
 
-Si agrupamos los valores de CD4 para encontrar una relación con la carga viral:
+Si agrupamos los valores de CD4 para encontrar una relación con la carga viral (CV):
 ```{r warning=FALSE}
 Tabla <- within(Tabla, {
 CD4_group <- recode(CD4,
@@ -415,7 +415,7 @@ numSummary(Tabla[,"CV"], groups=Tabla$CD4_group,
            statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
 ```
 
-Efectivamente, comprobamos que los niveles de carga viral son menores a medida que los niveles de CD4 son mayores. Entre un nivel medio-alto (400-800 cel/mel) no hay mucha diferencia pero si nos vamos a los extremos la diferencia es considerable.
+Efectivamente, comprobamos que los niveles de CV son menores a medida que los niveles de CD4 son mayores. Entre un nivel medio-alto (400-800 cel/mel) no hay mucha diferencia pero si nos vamos a los extremos la diferencia es considerable.
 
 # Gráficos
 
@@ -443,7 +443,7 @@ with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="",
                    ylab="", main="Frecuencia pacientes según nacionalidad"))
 ```
 
-##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente?
+##3. ¿Existe algún tipo de relación entre la carga viral o los niveles de CD4, y el sexo o la edad del paciente?
 Represento las proporciones de la población de los grupos según el **grupo de edad** y el  **género**:
 
 ```{r warning=FALSE}
@@ -475,7 +475,7 @@ densityplot(~ CV, data = Tabla, groups = SEXO, plot.points=FALSE,
             auto.key=TRUE, main= "Carga viral en función del género",  xlab="cp/ml" )
 ```
 
-Se puede ver como, a pesar de no haber grandes diferencias en las medias de los diferentes grupos, la distribución varía un poco. En mujeres la población es más homogénea, habiendo un mayor número de casos alrededor de la media. Por el contrario, en hombres se puede ver que hay una mayor variabilidad, encontrando casos con un mayor número de carga viral en sangre. 
+Se puede ver como, a pesar de no haber grandes diferencias en las medias de los diferentes grupos, la distribución varía un poco. En mujeres la población es más homogénea, habiendo un mayor número de casos alrededor de la media. Por el contrario, en hombres se puede ver que hay una mayor variabilidad, encontrando casos con un mayor número de CV en sangre. 
 
 Represento los niveles de **CD4** en función del **género**:
 
@@ -491,11 +491,11 @@ densityplot(~ CD4, data = Tabla, groups = SEXO, plot.points=FALSE,
             auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
 ```
 
-Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos sexos. Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
+Al igual que ocurre con la CV, los niveles de CD4 no varían mucho entre los distintos sexos. Sin embargo, en este caso las distribuciones de ambos sexos son muy parecidas.
 
 **2. CV y CD4 según edad.**
 
-Ahora voy a ver si la carga viral o los niveles de CD4 varían según la edad del paciente:
+Ahora voy a ver si la CV o los niveles de CD4 varían según la edad del paciente:
 
 Represento los niveles de **CV** en función de la **edad**:
 
@@ -526,7 +526,7 @@ densityplot(~ CD4, data = Tabla, groups = edad_cat, plot.points=FALSE,
             auto.key=TRUE, main= "Niveles de CD4 en función del género",  xlab="cel/ml" )
 ```
 
-Al igual que ocurre con la carga viral, los niveles de CD4 no varían mucho entre los distintos grupos de edad. Al igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adultos y en jóvenes el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
+Al igual que ocurre con la CV, los niveles de CD4 no varían mucho entre los distintos grupos de edad. Al igual que ocurría con la CV, las posibles diferencias en los perfiles de distribución de los niveles de CD4 se deban seguramente a las diferencias en el número de individuos de cada grupo. Mientras que en adultos y en jóvenes el número de individuos es bastante elevado (175 y 102, respectivamente), en el grupo de la tercera edad sólo tenemos 4 individuos. Sin embargo, centrándonos únicamente en el grupo de jóvenes y adultos, se puede observar como, al igual que vimos antes con niveles de CV, hay una mayor dispersión de datosreferentes a los niveles de CD4 en el grupo de adultos, comparados con el de jóvenes. 
 
 Parece que, mientras que en gente jóven los niveles de CD4 y CV son más homogéneos, en adultos existe una mayor variabilidad.
 
@@ -548,9 +548,9 @@ with(DATOSCSV, plotMeans(edad, MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, error.bars="
 
 Como puede observarse la media de edad de los pacientes que no presentan mutaciones de resistencia a farmacos es menor que la de aquellos que si presentan variantes del virus con resistencia a ciertos antiretrovirales. 
 
-##6. ¿Hay alguna relación entre el subtipo y el CD4/CV?
+##6. ¿Hay alguna relación entre el subtipo y el CD4/carga viral?
 
-Primero comparamos los niveles de carga viral en distintos subtipos:
+Primero comparamos los niveles de carga viral (CV) en distintos subtipos:
 
 ```{r}
 bwplot( CV ~ factor(SUBTIPO), data = Tabla, xlab="copias/ml", 
@@ -560,7 +560,7 @@ densityplot(~ CV|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE,
             main= "Carga viral en función del subtipo", xlab="copias/ml",layout=c(3,4))
 ```
 
-Hay bastante diversidad. Algunos subtipos son más propensos (01_AE, A1, 36_CPX etc) y otros contienen un nivel mucho más alto de carga viral (V, 02_AG, 06_CPX).
+Hay bastante diversidad. Algunos subtipos son más propensos (01_AE, A1, 36_CPX etc) y otros contienen un nivel mucho más alto de CV (V, 02_AG, 06_CPX).
 
 Los mismos analisis respecto al CD4:
 
@@ -577,7 +577,7 @@ Aquí los datos son más homogéneos aunque siguen existiendo diferencias. Hay v
 Fuentes:
 https://cran.r-project.org/web/packages/tigerstats/vignettes/densityplot.html
 
-##7. ¿Relación entre la carga viral y los CD4?
+##7. ¿Existe alguna relación entre la carga viral y los CD4?
 
 ```{r}
 library(ggplot2)
@@ -586,7 +586,7 @@ d <- ggplot(Tabla, aes(CD4, CV))
 d + geom_point(alpha = 1/2)
 ```
 
-De entrada, un mayor nivel de CD4 podría indicar un menor nivel de carga viral, ya que no existen muestras en el cuadrante superior derecha a partir de 500 cel/ml de CD4. Con una muestra tan limitada es dificil extraer una información pero podriamos decir que a niveles bajo-medios de CD4 (menor de 500 cel/ml) los niveles de carga viral, en algunos casos, son bastante altos. Como dijimos en el análisis descriptivo, ambas variables están muy debilmente relacionadas.
+De entrada, un mayor nivel de CD4 podría indicar un menor nivel de carga viral (CV), ya que no existen muestras en el cuadrante superior derecha a partir de 500 cel/ml de CD4. Con una muestra tan limitada es dificil extraer una información pero podriamos decir que a niveles bajo-medios de CD4 (menor de 500 cel/ml) los niveles de CV, en algunos casos, son bastante altos. Como dijimos en el análisis descriptivo, ambas variables están muy debilmente relacionadas.
 
 Fuentes:
 
