@@ -131,7 +131,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 #### Miquel
 
-1. *Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.*
+1. *¿Hay alguna relación entre el subtipo y el CD4/CV?*
 2. *¿Relación entre la carga viral y los CD4?*
 
 
@@ -141,18 +141,11 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 
 ```{r}
-#datosCSV <- read.csv("/home/miquel/tmp/uoc_SAD/DatosEntrada/TABLA\ MASTER.csv", 
-#                     header=T, dec=".",sep="\t")
-
-datosCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+datosCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/tablaMaster_corregida.csv", 
                   header=T, dec=".", na.strings="NA",sep="")
 CV<-datosCSV[2]
 ESTADO<-datosCSV[5] 
 with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
-
-#original (selecciona columna sexo en lugar de ESTADO real)
-#ESTADO<-datosCSV[4] 
-#   with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
 
 ```
 
@@ -160,12 +153,6 @@ with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
 Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa.
 
 ```{r}
-#original 
-#(da error, como si t.test solo aceptara una lista con 2 posibles valores
-# y ESTADO contiene DEJO TRATAMIENTO, FRACASO y NAIVE (3))
-#t.test(CV~ESTADO, alternative='two.sided', conf.level=.95, var.equal=FALSE,
-#data=datosCSV_fracaso_naive)
-
 #Si previamente, filtramos datosCSV para seleccionar unicamente los casos
 #fracaso-naive, sí que podemos ejecutar el t.test
 datosCSV_fracaso_naive <- subset(datosCSV, 
@@ -189,10 +176,7 @@ El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Po
 * Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección. * 
 
 ```{r}
-#Tabla <- read.table("C:/Users/Elena/Desktop/Tabla_4.txt", header=TRUE, sep="", 
-#                    na.strings="NA", dec=".", strip.white=TRUE)
-
-Tabla <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+Tabla <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/tablaMaster_corregida.csv", 
                   header=T, dec=".", na.strings="NA",sep="")
 
 ```
@@ -324,7 +308,7 @@ En todos los casos el p-value es superior a 0.05, por lo que no podemos rechazar
 ##4.  ¿Existe prevalencia de una mutación sobre un subtipo?
 
 ```{r}
-DATOSCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/Tabla_Master_Nacionalidad\ y\ CD4\ cambiados", 
+DATOSCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/tablaMaster_corregida.csv", 
                   header=T, dec=".", na.strings="NA",sep="")
  
 local({
@@ -384,7 +368,9 @@ prop.test(.Table, alternative='two.sided', conf.level=.95, correct=FALSE)
 ```
 En este caso aceptamos la Ho debido a que el p-valor es mayor de 0.05. Esto indica que las variables son independientes de modo que no importa que los hombres son más propensos a desarrollar mutaciones como que no desarrollarlas.
 
-##6. Con respecto al subtipo: ¿Hay alguna relación entre el subtipo y el CD4/CV? A lo mejor algún subtipo es más agresivo que otro e induce una mayor carga viral, una mayor respuesta del sistema inmune o un fracaso en el tratamiento.
+##6. ¿Hay alguna relación entre el subtipo y el CD4/CV? 
+
+El objetivo que buscamos con esta pregunta es saber si hay algun subtipo más agresivo que otro (reflejándose en mayores niveles de carga viral) o si algun subtipo produce una mayor respuesta del sistema inmune (niveles de CD4).
 
 En primer lugar, comprobamos cómo de diferentes son los valores para cada subtipo. 
 
@@ -403,7 +389,7 @@ numSummary(Tabla[,"CD4"], groups=Tabla$SUBTIPO,
 statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,1))
 ```
 
-Para el caso de CD4, no hay grandes diferencias con lo que podemos concluir que los distintos subtipos no parecen indicar un mayor o menor número de linfocitos T-CD4.
+En este caso no hay grandes diferencias con lo que podemos concluir que los distintos subtipos no parecen indicar un mayor o menor número de linfocitos T-CD4.
 
 Para comprobar si estas diferencias son significativas, podemos utilizar la prueba de [Kruskal-Wallis](https://es.wikipedia.org/wiki/Prueba_de_Kruskal-Wallis):
 
@@ -414,7 +400,9 @@ kruskal.test(CV ~ SUBTIPO, data=Tabla)
 
 ```
 
-Se analizan los datos con el fin de comprobar si existen diferencias sustanciales entre ellos (o dicho de otra manera, si todos los datos pueden pertener a una misma población). En este caso dado que p-value es superior a 0.05 podemos afirmar que no existen diferencias importantes.
+Se analizan los datos con el fin de comprobar si existen diferencias sustanciales entre ellos (o dicho de otra manera, si todos los datos pueden pertener a una misma población). En este caso dado que p-value es superior a 0.05 podemos afirmar que no existen diferencias importantes entre el subtipo y el CD4 o CV, es decir aceptamos la Hipotesis nula. 
+
+Como último test, utilizamos el algortimo [Chi-cuadrado](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_%CF%87%C2%B2). 
 
 ```{r warning=FALSE}
 Table <- xtabs(CV~SUBTIPO, data=Tabla)
@@ -423,17 +411,23 @@ Test <- chisq.test(Table, correct=FALSE)
 Test
 ```
 
+En este caso, el valor p es inferior a 0.05 por lo que podemos rechazar la hipotesis nula y aceptar la alternativa, es decir, que sí que esta relacionado el nivel de carga viral con el subtipo. Este resultado se contradice con el de Kruskal-Wallis por lo que no estoy completamente seguro de si el Chi-cuadrado esta aplicado correctamente. El algoritmo debe ser aplicado sobre variables cualitativas y en nuestro caso SUBTIPO sí lo es pero no CV. 
+
+Fuentes:
+http://es.slideshare.net/navarroenrique/gua-contraste-de-hiptesis-blog
+
 ##7. ¿Relación entre la carga viral y los CD4?
 
 Comprobamos el [índice de correlación](http://www.r-tutor.com/elementary-statistics/numerical-measures/correlation-coefficient):
+
 ```{r warning=FALSE}
 cor(Tabla[,"CV"], Tabla[,"CD4"], use="complete")
 ```
+
 El valor es negativo próximo a 0 por lo que ambas variables estan negativamente relacionadas (es decir, que cuando una se incrementa la otra decrece) pero débilmente (el valor es próximo a 0). 
 
 Si agrupamos los valores de CD4 para encontrar una relación con la carga viral:
 ```{r warning=FALSE}
-
 Tabla <- within(Tabla, {
 CD4_group <- recode(CD4,
 '0:200 = "Muy Bajo"; 200:400 = "Bajo"; 400:600 = "Medio"; 600:800 = "Alto"; 800:1100 = "Muy alto"',
@@ -447,13 +441,16 @@ print(.Table)
 cat("\npercentages:\n")
 print(round(100*.Table/sum(.Table), 2))
 })
-
-numSummary(Tabla[,"CV"], groups=Tabla$CD4_group, 
-           statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
- 
 ```
 
+La mayoría de muestras contienen unos niveles inferiores a 800 cel/ml.
 
+```{r warning=FALSE}
+numSummary(Tabla[,"CV"], groups=Tabla$CD4_group, 
+           statistics=c("mean", "sd", "IQR","quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+Efectivamente, comprobamos que los niveles de carga viral son menores a medida que los niveles de CD4 son mayores. Entre un nivel medio-alto (400-800 cel/mel) no hay mucha diferencia pero si nos vamos a los extremos la diferencia es considerable.
 # Gráficos
 
 ##1. ¿ Existe diferencia de carga viral entre los pacientes naives y los fracasos?
@@ -577,3 +574,47 @@ with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="",
 with(DATOSCSV, Barplot(MUTACIONES1, 
                        xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
 ```
+
+##5 ¿Hay alguna relación entre el subtipo y el CD4/CV?
+
+Primero comparamos los niveles de carga viral en distintos subtipos:
+
+```{r}
+bwplot(factor(SUBTIPO) ~ CV, data = Tabla, xlab="copias/ml", 
+       main = "Carga viral en función del subtipo")
+
+densityplot(~ CV|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE, 
+            main= "Carga viral en función del subtipo", xlab="copias/ml",layout=c(3,4))
+```
+
+Hay bastante diversidad. Algunos subtipos son más propensos (01_AE, A1, 36_CPX etc) y otros contienen un nivel mucho más alto de carga viral (V, 02_AG, 06_CPX).
+
+Los mismos analisis respecto al CD4:
+
+```{r}
+bwplot(factor(SUBTIPO) ~ CD4, data = Tabla, xlab="cel/ml", 
+       main = "CD4 en función del subtipo")
+
+densityplot(~ CD4|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE, 
+            main= "CD4 en función del subtipo", xlab="cel/ml",layout=c(3,4))
+```
+
+Aquí los datos son más homogéneos aunque siguen existiendo diferencias. Hay varios subtipos son datos (J y 14_BG). Los niveles de CD4 con valores bajos son más numerosos en un mismo subtipo (01_AE, 36_CPX, etc) pero también existen subtipos con un numero variable de distintos niveles de CD4.
+
+Fuentes:
+https://cran.r-project.org/web/packages/tigerstats/vignettes/densityplot.html
+
+##6. ¿Relación entre la carga viral y los CD4?
+
+```{r}
+library(ggplot2)
+
+d <- ggplot(Tabla, aes(CD4, CV))
+d + geom_point(alpha = 1/2)
+```
+
+De entrada, un mayor nivel de CD4 podría indicar un menor nivel de carga viral, ya que no existen muestras en el cuadrante superior derecha a partir de 500 cel/ml de CD4. Con una muestra tan limitada es dificil extraer una información pero podriamos decir que a niveles bajo-medios de CD4 (menor de 500 cel/ml) los niveles de carga viral, en algunos casos, son bastante altos. Como dijimos en el análisis descriptivo, ambas variables están muy debilmente relacionadas.
+
+Fuentes:
+
+http://docs.ggplot2.org/0.9.3.1/geom_point.html
