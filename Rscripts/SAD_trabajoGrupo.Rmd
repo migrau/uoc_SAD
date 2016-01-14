@@ -1,54 +1,57 @@
 ---
 title: "Software para el Análisis de Datos. Trabajo grupo X."
-author: José Ángel Fernández-Caballero Rico, Elena Tortosa Binacua, Jorge Pulido Lozano,
-  Miguel Grau López
-date: "Enero 8, 2015"
-output: pdf_document
-abstract: |
-  Aquí podemos hacer una despripción general de nuestros datos/objetivos.
+author: "José Ángel Fernández-Caballero, Elena Tortosa, Jorge Pulido, Miguel Grau"
+date: "Enero 15, 2015"
+output: word_document
+abstract: "A partir de un dataset real con datos de pacientes con el virus VIH se
+  busca obtener conclusiones relacionadas con distintas variables como niveles de
+  carga viral e CD4, mutaciones y índices de éxitos/fracasos del tratamiento. El estudio
+  se compone de una descripción de las variables, seguido de un análisis descriptivo
+  donde se aplican distintos métodos estadísticos, \n"
 ---
 
 # Descripción del trabajo.
 
-1. Buscad un conjunto de datos relacionado con la Bioestadística. Puede ser generado por simulación, pueden ser datos incorporados en un paquete de R (no se usarán los paquetes IRIS, IRIS3) u otros repositorios. Tenéis que explicar la procedencia de estos datos.
-2. Explicad las variables de vuestro fichero, tipo, clasificación, etc... ¡Todo aquello que creáis que es relevante!
-3. Pensad un mínimo de cuatro de preguntas objetivo que queráis contestar con estos datos.
-4. Haced el análisis descriptivo de los datos. Todo aquello que creáis que es necesario. ¡Resumid los datos a vuestro criterio pero con sentido! Pensad siempre en las preguntas objetivo que queréis contestar. Si debéis recodificar variables.
-5. Generad los gráficos que creáis necesarios para resumir de forma gráfica la información que tenéis.
-
+1. Conjunto de datos. Elección del dataset y descripción general del mismo.
+2. Explicación de las variables del dataset.
+3. Preguntas propuestas por cada uno de los miembros del grupo para estudiar el dataset.
+4. Ánalisis descriptivo siguiendo las preguntas propuestas.
+5. Gráficos de apoyo al análisis descriptivo.
 
 # Conjunto de datos
 
-El conjunto de datos proceden de la base de datos del hospital de Sevilla, en conctreto del servicio de Infecciosos. Estos datos recogen variables socio-demograficas de pacientes infectados con VIH. La Base de Datos (BdD) esta protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos a la cual solo podrán acceder los investigadores implicados en este proyecto, cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes, en esta ultima BdD el acceso estará permitido solo al Investigador principal, todos los investigadores se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
+El conjunto de datos proceden de la base de datos del hospital de Sevilla, en concreto del servicio de Infecciosos. Estos datos recogen variables socio-demográficas de pacientes infectados con VIH. La Base de Datos (BdD) está protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos. Además sólo podrán acceder a la BdD los investigadores implicados en el proyecto. Cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes y en esta última BdD el acceso estará permitido unicamente al Investigador principal. 
+
+Todos los investigadores se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de Diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de Noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
 
 # Descripción de las variables
 
-###*LOCALIDAD*  
-Esta variable nos informa del Hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
+####*LOCALIDAD:*  
+Esta variable nos informa del hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
-###*CV*
-Mediante esta variable podemos ver la cuantificación de la infección por virus VIH, se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
+####*CV:*
+Mediante esta variable podemos ver la cuantificación de la infección por virus VIH. Se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
 
-###*CD4* 
+####*CD4:* 
 Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa cuyo rango es de 2-1.650 cel/ml.
 
-###*SEXO:* 
+####*SEXO:* 
 Sexo del paciente. Hombre-Mujer. Variable de tipo cualitativo.
 
-###*ESTADO:* 
+####*ESTADO:* 
 Descripción del estado clínico actual del paciente (variable de tipo cualitativo). Tres posibles opciones:
 
   1. Naive: Paciente que todavía no han comenzado ningún tratamiento o que empieza a tratarse por primera vez.
   2. Dejó tratamiento: Paciente que ha abandonado el tratamiento. El motivo puede ser de distinta índole (efectos secundarios, desisten por agotamiento etc)
   3. Fracaso: Paciente bajo tratamiento en los que no se ha conseguido frenar la replicación del virus. Las razones pueden ser varias, por ejemplo una mutación de resistencia o sencillamente que el paciente haya dejado de tomar el fármaco.
   
-###*EDAD* 
+####*EDAD:* 
 Esta variable nos informa de la edad de los pacientes que se están estudiando.  Se trata de una variable tipo cuantitativa. Aunque podría considerarse de tipo continuo, aquí se trata como una variable de tipo discreta, en la que únicamente se consideran valores de años completos. Para realizar los análisis de los datos dividiremos a los pacientes en tres grupo según su edad: jóvenes (menores de 3 años), adultos (comprendidos entre los 30 y 65 años) y el grupo de la tercera edad (aquellos mayores de 65 años).
 
-###*NACIONALIDAD* 
+####*NACIONALIDAD:* 
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
-###*SUBTIPO* 
+####*SUBTIPO:* 
 La diversidad genética del virus de la inmunodeficiencia humana (VIH) constituye un reto para su identificación y caracterización microbiológica.
 La diversidad del VIH y el desarrollo de subtipos es consecuencia de la capacidad del VIH de producir miles de millones de partículas virales al día. La enzima implicada en la replicación viral, la transcriptasa inversa, no es precisa y en ocasiones incorpora errores en el genoma viral, lo que resulta en mutaciones genéticas. Cuanto más se replica el VIH, más probable es que se produzcan errores, aumentando el potencial de que se produzca la variación genética.
 La clasificación en subtipos obedece a las diferentes secuencias de proteínas que caracterizan a los virus en circulación y no al modo en que el sistema inmunológico humano reconoce o reacciona al VIH. Este hecho es especialmente relevante por la introducción de múltiples variantes del VIH como consecuencia de la inmigración o los viajes internacionales
@@ -58,8 +61,8 @@ La prevalencia de suptipos no-B del grupo M del VIH han aumentado en los último
 En España y Portugal la mayoría de los aislados circulantes son del VIH-1, tipo B. La infección del VIH-2 está poco extendida en España, unos cientos de casos la mayoría pertenecientes a inmigrantes africanos del subtipo A, aunque los inmigrantes de Guinea Ecuatorial residentes en nuestro país son portadores del subtipo B
 En la actualidad, más del 20% de las nuevas infecciones por VIH en nuestro país y gran parte de Europa se debe a cepas distintas del VIH-1 subtipo B.
 
-###*RESISTENCIA MUTACIONES* (Jorge Pulido)
-El VIH es “resistente” a un medicamento cuando continúa multiplicándose mientras el paciente está tomando antirretrovirales (ARVs). El VIH muta casi todas las veces que produce nuevas copias de sí mismo. El virus “tipo salvaje” es la forma más común del VIH. Cualquier otra forma diferente al tipo salvaje es considerada una mutación.
+####*RESISTENCIA MUTACIONES:*
+El VIH es "resistente" a un medicamento cuando continúa multiplicándose mientras el paciente está tomando antirretrovirales (ARVs). El VIH muta casi todas las veces que produce nuevas copias de sí mismo. El virus “tipo salvaje” es la forma más común del VIH. Cualquier otra forma diferente al tipo salvaje es considerada una mutación.
 Cuanto más se multiplica el VIH, más mutaciones aparecen. Tan solo una mutación puede ser suficiente para que el VIH desarrolle resistencia a algunos medicamentos
 La mejor manera de prevenir el desarrollo de resistencia es controlar al VIH con ARVs potentes. Si el paciente se salta la dosis de sus medicamentos, el VIH se multiplicará con mayor facilidad, ocasionando que ocurrirán más mutaciones y algunas de ellas pueden causar la  resistencia.
 Las mutaciones ocurren al azar, diariamente, pero muchas no causan daño. De hecho, en realidad muchas mutaciones ponen al VIH en desventaja – ya que reducen la “capacidad” del virus (lo deterioran) y disminuyen su habilidad para infectar células CD4 en el cuerpo. Sin embargo, algunas mutaciones pueden darle al VIH una ventaja de supervivencia cuando se usan medicamentos contra el VIH, ya que estas mutaciones pueden bloquear a los medicamentos y no los dejan actuar contra las enzimas del VIH a las que deben atacar. Estas son las mutaciones preocupantes cuando hablamos de resistencia a los medicamentos.
@@ -72,13 +75,16 @@ El VIH se vale de varias enzimas para replicarse dentro de la célula humana. Ta
 •	Proteasa: los inhibidores de la proteasa atacan a esta enzima. 
 
 •	gp41: los inhibidores de la fusión atacan a esta proteína de la pared exterior del VIH.
+
 En las personas con VIH, la resistencia a medicamentos puede hacer que los medicamentos sean menos efectivos o completamente ineficaces, lo que puede reducir de manera importante las opciones de tratamiento.
+
 Las mutaciones que generan resistencia a los medicamentos para el VIH pueden aparecer antes o durante el tratamiento. A continuación vemos cómo sucede:
 
 •	Transmisión de VIH resistente a medicamentos
 
 •	Durante el tratamiento
-Si existe una "regla de oro" en el tratamiento antirretroviral, es esta: cuanto menor sea la cantidad de virus que hay en el cuerpo, menor será la posibilidad de que el virus continúe reproduciéndose y mutando. Un régimen anti VIH poderoso es la forma más eficaz de mantener al virus en un nivel bajo
+
+Si existe una "regla de oro" en el tratamiento antirretroviral, es esta: cuanto menor sea la cantidad de virus que hay en el cuerpo, menor será la posibilidad de que el virus continúe reproduciéndose y mutando. Un régimen anti VIH poderoso es la forma más eficaz de mantener al virus en un nivel bajo.
 Lamentablemente, existen una serie de factores que pueden evitar que un régimen de medicamentos para el VIH alcance su potencia óptima
 
 •	Una adherencia insuficiente al tratamiento: Omitir algunas dosis o no tomar los medicamentos correctamente puede causar una disminución de la cantidad de medicamento anti VIH en la sangre
@@ -97,8 +103,7 @@ EL VIH incorpora mecanismos de resistencia a los fármacos como:
 •	Aumento del numero de enzimas transcriptasas inversas presentes en el virion con lo que disminuye la presión del fármaco al no poder bloquear todas las enzimas permitiendo que asi el virion siga multiplicándose.
 
 2)	Mutaciones que afectan a las proteasas
-Esta ocasión es el turno de las mutaciones del VIH que confieren resistencia a los inhibidores de la proteasa (IP), Se ha observado con frecuencia una amplia resistencia cruzada a los IP en el VIH que presenta mutaciones en las posiciones 33, 82, 84 y 90 del gen de la proteasa. A este tipo de mutaciones se las conoce como mutaciones universales asociadas a los inhibidores de la proteasa. Se distinguen dos tipos de mutaciones que confieren resistencia a los IP: las mutaciones primarias y las secundarias. Las mutaciones primarias se localizan justo en la enzima de la proteasa del VIH e impiden que los IP se unan a ella. Son mutaciones bastante concretas para cada uno de los fármacos. Las secundarias se localizan fuera del lugar activo de la proteasa y en general aparecen más tarde que las primarias. Por sí solas no causan resistencia a los fármacos, pero permiten al virus adaptarse al efecto producido por la mutación primaria
-Por ejemplo las mutaciones que aparecen en las posiciones 10, 20, 24, 46, 53, 54, 63, 71, 82, 84 y 90 de la IP pueden provocar una disminución de la susceptibilidad a lopinavir.
+Esta ocasión es el turno de las mutaciones del VIH que confieren resistencia a los inhibidores de la proteasa (IP). Se ha observado con frecuencia una amplia resistencia cruzada a los IP en el VIH que presenta mutaciones en las posiciones 33, 82, 84 y 90 del gen de la proteasa. A este tipo de mutaciones se las conoce como mutaciones universales asociadas a los inhibidores de la proteasa. Se distinguen dos tipos de mutaciones que confieren resistencia a los IP: las mutaciones primarias y las secundarias. Las mutaciones primarias se localizan justo en la enzima de la proteasa del VIH e impiden que los IP se unan a ella. Son mutaciones bastante concretas para cada uno de los fármacos. Las secundarias se localizan fuera del lugar activo de la proteasa y en general aparecen más tarde que las primarias. Por sí solas no causan resistencia a los fármacos, pero permiten al virus adaptarse al efecto producido por la mutación primaria
 
 # Preguntas objetivo
 
@@ -139,6 +144,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 
 ##1. ¿ Existe diferencia de *Carga viral* entre los pacientes naives y los fracasos?
 
+Empezamos calculando los valores medios entre los distintos tipos de pacientes:
 
 ```{r}
 datosCSV <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/tablaMaster_corregida.csv", 
@@ -150,7 +156,7 @@ with(datosCSV, tapply(CV, list(ESTADO), mean, na.rm=TRUE))
 ```
 
 
-Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa.
+Observamos que la media de CV en el grupo NAIVE (282669) es bastante superior al grupo de FRACASO (41875) pero vamos a ver si esa diferencia es significativa. Para ello, vamos a calcular un t-test:
 
 ```{r}
 #Si previamente, filtramos datosCSV para seleccionar unicamente los casos
@@ -161,9 +167,9 @@ t.test(CV~ESTADO, alternative='two.sided', conf.level=.95,
        var.equal=FALSE, data=datosCSV_fracaso_naive)
 ```
 
-Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias, por tanto, no podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
+Obtenemos un p valor inferior a 0.05 por tanto, no existen evidencias significativas para aceptar la hipótesis nula de igualdad de medias. No podemos afirmar que la carga viral media en el grupo NAIVE es la misma que el grupo FRACASO.
 
-##2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
+##2. ¿ Cómo se distribuyen los individuos en los hospitales de procedencia?
 
 ```{r}
 table(datosCSV[1])
@@ -173,9 +179,10 @@ El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Po
 
 ##3. ¿Existe algún tipo de relación entre la carga viral (CV) o los niveles de CD4, y el sexo o la edad del paciente? 
 
-* Esto nos da una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección. * 
+Esto nos daría una idea de si el virus es capaz de replicarse mejor en hombres o mujeres, o estos grupos responden de manera diferencial a la infección del virus (según los niveles de CD4). Además, podemos ver si la edad del paciente influye en los niveles de replicación del virus o en la respuesta del individuo a la infección.
 
 ```{r}
+#Cargamos datos
 Tabla <- read.csv("~/tmp/uoc/uoc_SAD/DatosEntrada/tablaMaster_corregida.csv", 
                   header=T, dec=".", na.strings="NA",sep="")
 
@@ -321,7 +328,7 @@ print(round(100*.Table/sum(.Table), 2))
 ```
 
 Como puede observarse el subtipo B es el predominante en la población española con un 76% seguido por las forma recombinante URF de las cuales la mayoritaria de este tipo es la 02_AG siendo un 8% del total y un 71% de las formas URF.
-Todos estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en America y Europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B debido a efectos migratorios. 
+Todos estos subtipos corresponden a la variante vih-1, la cual se encuentra principalmente en América y Europa. A la vista de los resultados resulta obvio que España tenga predominancia del subtipo B debido a efectos migratorios. 
 Sin embargo como se denota por los resultados la variante 02_AG se está incrementando en España debido a la migración africana que recibe nuestro país, pero a la contra es factible preveer que personas que hayan migrado desde África y libres del virus queden infectados por la variante Europea.
 
 ```{r}
@@ -355,7 +362,9 @@ En este caso se rechaza la Ho debido a que el p-valor es mayor de 0.05. Esto ind
 ##5.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
 
 Para determinar si existe relación entre ambas variables atenderemos al siguiente contraste de hipótesis:
-Ho: Las dos variables estan relacionadas 
+
+Ho: Las dos variables estan relacionadas.
+
 Ha: Las dos variables son independientes.
 
 ```{r warning=FALSE}
@@ -451,6 +460,7 @@ numSummary(Tabla[,"CV"], groups=Tabla$CD4_group,
 ```
 
 Efectivamente, comprobamos que los niveles de carga viral son menores a medida que los niveles de CD4 son mayores. Entre un nivel medio-alto (400-800 cel/mel) no hay mucha diferencia pero si nos vamos a los extremos la diferencia es considerable.
+
 # Gráficos
 
 ##1. ¿ Existe diferencia de carga viral entre los pacientes naives y los fracasos?
@@ -575,12 +585,12 @@ with(DATOSCSV, Barplot(MUTACIONES1,
                        xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
 ```
 
-##5 ¿Hay alguna relación entre el subtipo y el CD4/CV?
+##6. ¿Hay alguna relación entre el subtipo y el CD4/CV?
 
 Primero comparamos los niveles de carga viral en distintos subtipos:
 
 ```{r}
-bwplot(factor(SUBTIPO) ~ CV, data = Tabla, xlab="copias/ml", 
+bwplot( CV ~ factor(SUBTIPO), data = Tabla, xlab="copias/ml", 
        main = "Carga viral en función del subtipo")
 
 densityplot(~ CV|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE, 
@@ -592,7 +602,7 @@ Hay bastante diversidad. Algunos subtipos son más propensos (01_AE, A1, 36_CPX 
 Los mismos analisis respecto al CD4:
 
 ```{r}
-bwplot(factor(SUBTIPO) ~ CD4, data = Tabla, xlab="cel/ml", 
+bwplot(CD4~ factor(SUBTIPO), data = Tabla, xlab="cel/ml", 
        main = "CD4 en función del subtipo")
 
 densityplot(~ CD4|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE, 
@@ -604,7 +614,7 @@ Aquí los datos son más homogéneos aunque siguen existiendo diferencias. Hay v
 Fuentes:
 https://cran.r-project.org/web/packages/tigerstats/vignettes/densityplot.html
 
-##6. ¿Relación entre la carga viral y los CD4?
+##7. ¿Relación entre la carga viral y los CD4?
 
 ```{r}
 library(ggplot2)
