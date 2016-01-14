@@ -17,6 +17,7 @@ abstract: |
 5. Generad los gráficos que creáis necesarios para resumir de forma gráfica la información que tenéis.
 
 
+
 El conjunto de datos proceden de la base de datos del hospital de Sevilla, en conctreto del servicio de Infecciosos. Estos datos recogen variables socio-demograficas de pacientes infectados con VIH. La Base de Datos (BdD) esta protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos a la cual solo podrán acceder los investigadores implicados en este proyecto, cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes, en esta ultima BdD el acceso estará permitido solo al Investigador principal, todos los investigadores se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
 
 # Descripción de las variables
