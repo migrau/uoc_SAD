@@ -3,11 +3,11 @@ title: "Software para el Análisis de Datos. Trabajo grupo X."
 author: "José Ángel Fernández-Caballero, Elena Tortosa, Jorge Pulido, Miguel Grau"
 date: "Enero 15, 2015"
 output: word_document
-abstract: "A partir de un dataset real con datos de pacientes con el virus VIH se
+Abstract: "A partir de un dataset real con datos de pacientes con el virus VIH se
   busca obtener conclusiones relacionadas con distintas variables como niveles de
-  carga viral e CD4, mutaciones y índices de éxitos/fracasos del tratamiento. El estudio
+  carga viral y CD4, mutaciones e índices de éxitos/fracasos del tratamiento. El estudio
   se compone de una descripción de las variables, seguido de un análisis descriptivo
-  donde se aplican distintos métodos estadísticos, \n"
+  donde se aplican distintos métodos estadísticos, y finalmente un análisis gráfico que apoya el análisis descriptivo realizado previamente. \n"
 ---
 
 # Descripción del trabajo.
@@ -30,10 +30,10 @@ Todos los investigadores se comprometen a respetar la confidencialidad de los da
 Esta variable nos informa del hospital de procedencia donde se encuentra el paciente. Se trata de una variable tipo cualitativo nominal. El fichero de datos cuenta con 11 localidades distintas (VIRGEN DE LAS NIEVES, Poniente El Ejido, Torrecardenas, San Cecilio, Jaen, Motril, Andujar, LINARES, CARCEL GRANADA, JAEN y VALENCIA)
 
 ####*CV:*
-Mediante esta variable podemos ver la cuantificación de la infección por virus VIH. Se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa. Su rango es de 34-10.000.00 copias/ml.
+Mediante esta variable podemos ver la cuantificación de la infección por virus VIH. Se calcula por estimación de la cantidad de partículas virales en los fluidos corporales. Se trata de una variable cuantitativa de tipo continuo. Su rango es de 34-10.000.00 copias/ml.
 
 ####*CD4:* 
-Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa cuyo rango es de 2-1.650 cel/ml.
+Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa de tipo continuo cuyo rango es de 2-1.650 cel/ml.
 
 ####*SEXO:* 
 Sexo del paciente. Hombre-Mujer. Variable de tipo cualitativo.
