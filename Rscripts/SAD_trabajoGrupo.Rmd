@@ -2,12 +2,13 @@
 title: "Software para el Análisis de Datos. Trabajo del grupo X."
 author: "José Ángel Fernández-Caballero, Elena Tortosa, Jorge Pulido, Miguel Grau"
 date: "Enero 15, 2015"
-output: word_document
-Abstract: "A partir de un dataset real con datos de pacientes con el virus VIH se
+output: pdf_document
+abstract: "A partir de un dataset real con datos de pacientes con el virus VIH se
   busca obtener conclusiones relacionadas con distintas variables como niveles de
   carga viral y CD4, mutaciones e índices de éxitos/fracasos del tratamiento. El estudio
   se compone de una descripción de las variables, seguido de un análisis descriptivo
-  donde se aplican distintos métodos estadísticos, y finalmente un análisis gráfico que apoya el análisis descriptivo realizado previamente. \n"
+  donde se aplican distintos métodos estadísticos, y finalmente un análisis gráfico
+  que apoya el análisis descriptivo realizado previamente. \n"
 ---
 
 # Descripción del trabajo.
@@ -22,7 +23,7 @@ Abstract: "A partir de un dataset real con datos de pacientes con el virus VIH s
 
 El conjunto de datos proceden de la base de datos del hospital de Sevilla, en concreto del servicio de Enfermedades Infecciosas. Estos datos recogen variables socio-demográficas de pacientes infectados con VIH. La Base de Datos (BdD) está protegida con clave y dotada de diferentes mecanismos lógicos que impidan la introducción de datos erróneos. Además sólo podrán acceder a la BdD los investigadores implicados en el proyecto. Cabe aclarar que se separan en una segunda BdD y con diferente clave de acceso los datos identificativos de los pacientes y en esta última BdD el acceso estará permitido unicamente al Investigador principal. 
 
-Todos los investigadores que accedan a esta base se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de Diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de Noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
+Todos los investigadores que accedan a esta base de datos se comprometen a respetar la confidencialidad de los datos de acuerdo a la Ley Orgánica 15/1999, de 13 de Diciembre, sobre la Protección de datos de Carácter Personal y la ley 41/2002 de 14 de Noviembre, ley básica reguladora de la autonomía del paciente y derechos y obligaciones en materia de información y documentación clínica.
 
 # Descripción de las variables
 
@@ -36,7 +37,7 @@ Mediante esta variable podemos ver la cuantificación de la infección por virus
 Los linfocitos T-CD4 son un tipo de células que constituyen una parte esencial del sistema inmunitario. Su función principal es la de activar al propio sistema alertándole de la presencia de patógenos o de una replicación errónea de células humanas, para que pueda hacerles frente y corregir la situación. Se trata también de una variable cuantitativa de tipo continuo cuyo rango es de 2-1.650 cel/ml.
 
 ####*SEXO:* 
-Esta variable nos informa del sexo del paciente. Es una variable de tipo cualitativo nominal, y puede ser tomar dos valore diferentes :hombre o mujer.
+Esta variable nos informa del sexo del paciente. Es una variable de tipo cualitativo nominal, y puede ser tomar dos valores diferentes: hombre o mujer.
 
 ####*ESTADO:* 
 Descripción del estado clínico actual del paciente (variable de tipo cualitativo). Presenta tres posibles opciones:
@@ -52,7 +53,7 @@ Esta variable nos informa de la edad de los pacientes que se están estudiando. 
 Esta variable nos informa de la nacionalidad de los pacientes estudiados. Se trata de una variable de tipo cualitativo. En estos datos encontramos cinco nacionalidades diferentes: africana, española, francesa, italiana y rusa.
 
 ####*SUBTIPO:* 
-Los subtipos de del virus VIH son són consecuencia de la alta capacidad reproductiva que tienen los virus. La mayoría de esos subtipos se deben a la introducción de errores por parte de la transcriptasa inversa, generando así una amplia gama de variantes proteínas que conforman el complejo vírico. 
+Los subtipos de del virus VIH son consecuencia de la alta capacidad reproductiva que tienen los virus. La mayoría de esos subtipos se deben a la introducción de errores por parte de la transcriptasa inversa, generando así una amplia gama de variantes proteínas que conforman el complejo vírico. 
 Las cepas del virus VIH se clasifican en dos tipos (1 y 2), las cuales a su vez se clasifican en subtipos/genotipos según la sección que tengan mutadas. Actualmente, la cepa causante de la pandemia es la variante VIH-1 M subtipo B, el cual es el predominante en el primer mundo. Este hecho, en Europa, puede compensarse por la entrada del genotipo VIH-1 M subtipo A procedente de inmigrantes portadores del virus de origen africano.
 
 
@@ -60,6 +61,7 @@ Las cepas del virus VIH se clasifican en dos tipos (1 y 2), las cuales a su vez 
 Las mutaciones de resistencia del virus son aquellas que ocasionan que el virus continúe replicándose en el huésped a pesar de la administración de retrovirales para paliar la enfermedad.
 Las mutaciones de resistencia se producen principalmente a nivel de la transcriptasa inversa del virus y en las proteasas del mismo, principalmente. Los medicamentos antiretrovirales atacan a estas estructuras para impedir la formación de nuevos viriones, al presentar una mutación, el medicamento no lo reconoce y por tanto la carga viral aumenta en el paciente.
 
+\newpage
 
 # Preguntas objetivo
 
@@ -95,6 +97,7 @@ Se plantean un conjunto de preguntas a aplicar sobre el dataset con el objetivo 
 1. *¿Hay alguna relación entre el subtipo y el CD4/carga viral?*
 2. *¿Existe alguna relación entre la carga viral y los CD4?*
 
+\newpage
 
 # Análisis descriptivo
 
@@ -128,7 +131,7 @@ Obtenemos un p-valor inferior a 0.05. Por tanto, no existen evidencias significa
 ##2. ¿ Cómo se distribuyen los individuos en los hospitales de procedencia?
 
 ```{r}
-table(datosCSV[1])
+table(datosCSV[1]) 
 ```
 
 El hospital con más pacientes es el Virgen de las Nieves con un total de 84. Por el contrario, el hospital que menos pacientes presenta es Andujar. 
@@ -421,26 +424,29 @@ Efectivamente, comprobamos que los niveles de CV son menores a medida que los ni
 
 ##1. ¿ Existe diferencia de carga viral entre los pacientes naives y los fracasos?
 
-```{r}
-plot(datosCSV[1], cex.names =0.4)
-```
+
 
 ```{r}
-boxplot(CV~ESTADO, data=datosCSV, id.method="y")
+boxplot(CV~ESTADO, data=datosCSV, id.method="y", ylab="Carga viral (copias/ml)", 
+        main= "Carga viral según estado del paciente", xlab="Estado clínico")
 ```
 
 ##2. ¿ Como se distribuyen los individuos en los hospitales de procedencia?
 
 ```{r}
-with(datosCSV, pie(table(LOCALIDAD), labels=levels(LOCALIDAD), xlab="", 
-  ylab="", main="Pacientes según hospital"))
+with(datosCSV, pie(table(LOCALIDAD), labels=levels(LOCALIDAD),
+                   main="Pacientes según hospital",cex=0.5))
+
+ 
+plot(datosCSV[1], cex.names =0.29, ylab = "Número de pacientes", xlab = "Hospital")
 ```
+ 
 
 Para saber más acerca de cómo están distribuidas las nacionalidades de los pacientes VIH podemos hacer la siguiente gráfica, donde se observa (como era de esperar) que la nacionalidad Española es la más común. 
 
 ```{r}
-with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), xlab="", 
-                   ylab="", main="Frecuencia pacientes según nacionalidad"))
+with(datosCSV, pie(table(nacionalidad), labels=levels(nacionalidad), 
+                   main="Frecuencia pacientes según nacionalidad",cex=0.5))
 ```
 
 ##3. ¿Existe algún tipo de relación entre la carga viral o los niveles de CD4, y el sexo o la edad del paciente?
@@ -448,9 +454,9 @@ Represento las proporciones de la población de los grupos según el **grupo de 
 
 ```{r warning=FALSE}
 layout ( matrix (c(1 ,2) , 1, 2, byrow = TRUE ))
-pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), xlab="", ylab="", 
+pie(table(Tabla$edad_cat), labels=levels(Tabla$edad_cat), 
     main="Grupos de edad")
-pie(table(Tabla$SEXO), labels=levels(Tabla$SEXO), xlab="", ylab="", main="Géneros")
+pie(table(Tabla$SEXO), labels=levels(Tabla$SEXO), main="Géneros")
 
 ```
 
@@ -534,16 +540,19 @@ Parece que, mientras que en gente jóven los niveles de CD4 y CV son más homog�
 
 ```{r}
 library(colorspace)
-with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), xlab="", ylab="", 
-                   main="SUBTIPO", col=rainbow_hcl(length(levels(SUBTIPO)))))
+with(DATOSCSV, pie(table(SUBTIPO), labels=levels(SUBTIPO), 
+                   main="Frecuencia de casos agrupados por subtipo",cex=0.5, col=rainbow_hcl(length(levels(SUBTIPO)))))
 
-with(DATOSCSV, Barplot(MUTACIONES1, 
-                       xlab="MUTACIONESPAÑA.DE.RESPAÑAISTENCIA", ylab="Frequency"))
+with(DATOSCSV, Barplot(MUTACIONES1, xlab="MUTACIONES", ylab="Frequency"))
+
 ```
+
 ##5.  ¿Existe relación entre la edad del paciente y las mutaciones que se desarrollan?
 
 ```{r}
-with(DATOSCSV, plotMeans(edad, MUTACIONESPAÑA.DE.RESPAÑAISTENCIA, error.bars="se"))
+with(DATOSCSV, plotMeans(edad, MUTACIONES1, error.bars="se", ylab="Edad", 
+                         xlab="Mutacion presente", 
+                         main= "Edad de pacientes con/sin mutaciones"))
 ```
 
 Como puede observarse la media de edad de los pacientes que no presentan mutaciones de resistencia a farmacos es menor que la de aquellos que si presentan variantes del virus con resistencia a ciertos antiretrovirales. 
@@ -565,14 +574,14 @@ Hay bastante diversidad. Algunos subtipos son más propensos (01_AE, A1, 36_CPX 
 Los mismos analisis respecto al CD4:
 
 ```{r}
-bwplot(CD4~ factor(SUBTIPO), data = Tabla, xlab="cel/ml", 
-       main = "CD4 en función del subtipo")
+bwplot(CD4~ factor(SUBTIPO), data = Tabla,
+       xlab=list("cel/ml"), main = "CD4 en función del subtipo")
 
 densityplot(~ CD4|SUBTIPO, data = Tabla, plot.points=FALSE, auto.key=TRUE, 
             main= "CD4 en función del subtipo", xlab="cel/ml",layout=c(3,4))
 ```
 
-Aquí los datos son más homogéneos aunque siguen existiendo diferencias. Hay varios subtipos son datos (J y 14_BG). Los niveles de CD4 con valores bajos son más numerosos en un mismo subtipo (01_AE, 36_CPX, etc) pero también existen subtipos con un numero variable de distintos niveles de CD4.
+Aquí los datos son más homogéneos aunque siguen existiendo diferencias. Hay varios subtipos son datos (J y 14_BG). Los niveles de CD4 con valores bajos son más numerosos en un mismo subtipo (01_AE, 36_CPX, etc) pero también existen subtipos con un número variable de distintos niveles de CD4.
 
 Fuentes:
 https://cran.r-project.org/web/packages/tigerstats/vignettes/densityplot.html
@@ -586,7 +595,7 @@ d <- ggplot(Tabla, aes(CD4, CV))
 d + geom_point(alpha = 1/2)
 ```
 
-De entrada, un mayor nivel de CD4 podría indicar un menor nivel de carga viral (CV), ya que no existen muestras en el cuadrante superior derecha a partir de 500 cel/ml de CD4. Con una muestra tan limitada es dificil extraer una información pero podriamos decir que a niveles bajo-medios de CD4 (menor de 500 cel/ml) los niveles de CV, en algunos casos, son bastante altos. Como dijimos en el análisis descriptivo, ambas variables están muy debilmente relacionadas.
+De entrada, un mayor nivel de CD4 podría indicar un menor nivel de carga viral (CV), ya que no existen muestras en el cuadrante superior derecha a partir de 500 cel/ml de CD4. Con una muestra tan limitada es dificil extraer una conclusión pero podriamos decir que a niveles bajo-medios de CD4 (menor de 500 cel/ml) los niveles de CV, en algunos casos, son bastante altos. Como dijimos en el análisis descriptivo, ambas variables están muy debilmente relacionadas.
 
 Fuentes:
 
